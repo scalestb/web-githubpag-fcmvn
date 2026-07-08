@@ -1,12 +1,12 @@
 # Tra cuu the Panini
 
-Website tinh dung HTML, CSS va JavaScript de tra cuu danh sach the theo mua, rarity, tu khoa va ton kho.
+Website tinh dung HTML, CSS va JavaScript de tra cuu danh sach the theo so the, rarity, tu khoa va trang thai co the.
 
 ## Cau truc du lieu
 
 - `data/seasons.json`: danh sach mua the.
-- `data/cards.json`: danh sach the, gom `seasonId`, `code`, `name`, `team`, `image`, `rarity`, `stock`.
-- `assets/cards/`: anh minh hoa cho tung the.
+- `data/cards.json`: danh sach the, gom `id`, `number`, `name`, `rarity`, `hasCard`, `imageUrl`, `shopeeLink`, `stock`, `totalInbound`, `totalOutbound`.
+- `assets/cards/`: anh minh hoa cho tung the, uu tien ten file theo so the 3 chu so nhu `001.png`, `002.webp`.
 
 ## Chay local
 

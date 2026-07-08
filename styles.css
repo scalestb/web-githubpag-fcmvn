@@ -146,6 +146,12 @@ input[type="search"] {
   outline: none;
 }
 
+select:disabled {
+  color: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.78;
+}
+
 select:focus,
 input[type="search"]:focus {
   border-color: var(--accent);
@@ -216,31 +222,38 @@ input[type="search"]:focus {
   box-shadow: 0 12px 28px rgba(20, 35, 24, 0.08);
 }
 
-.card-item.in-stock {
+.card-item.has-card {
   border-color: rgba(22, 115, 74, 0.42);
   background: #f4fbf6;
 }
 
-.card-item.in-stock .card-image-wrap {
+.card-item.has-card .card-image-wrap {
   background: #dfeee3;
 }
 
-.card-item.out-of-stock {
+.card-item.missing-card {
   border-color: #cfd6cf;
   background: #eef0ee;
   opacity: 0.7;
 }
 
-.card-item.out-of-stock .card-image {
+.card-item.missing-card .card-image {
   filter: grayscale(1);
 }
 
 .card-image-wrap {
+  position: relative;
   display: grid;
   place-items: center;
   aspect-ratio: 3 / 4;
   background: #e8efe7;
   border-bottom: 1px solid var(--line);
+}
+
+.card-image-wrap.missing-image::after {
+  content: "Chưa có ảnh";
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .card-image {
@@ -294,6 +307,11 @@ input[type="search"]:focus {
   color: #235a97;
 }
 
+.rarity-pill.green {
+  background: #e8f7ed;
+  color: var(--accent-strong);
+}
+
 .card-name {
   min-height: 2.45em;
   margin: 0;
@@ -301,15 +319,28 @@ input[type="search"]:focus {
   line-height: 1.22;
 }
 
-.card-team {
+.card-status {
   margin: 0;
-  color: var(--muted);
   font-size: 0.92rem;
+  font-weight: 800;
+}
+
+.card-status.available {
+  color: var(--accent-strong);
+}
+
+.card-status.unavailable {
+  color: var(--danger);
 }
 
 .stock-row {
   border-top: 1px solid var(--line);
   padding-top: 11px;
+}
+
+.movement-row {
+  color: var(--muted);
+  font-size: 0.86rem;
 }
 
 .buy-link {

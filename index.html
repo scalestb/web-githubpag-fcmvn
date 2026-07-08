@@ -22,13 +22,13 @@
 
         <div class="controls" aria-label="Bộ lọc tra cứu">
           <label class="field">
-            <span>Mùa thẻ</span>
+            <span>Bộ thẻ</span>
             <select id="seasonSelect"></select>
           </label>
 
           <label class="field search-field">
             <span>Tìm kiếm</span>
-            <input id="searchInput" type="search" placeholder="Nhập mã thẻ hoặc tên cầu thủ">
+            <input id="searchInput" type="search" placeholder="Nhập số thẻ, tên hoặc rarity">
           </label>
 
           <label class="field">
@@ -40,7 +40,7 @@
 
           <label class="toggle-field">
             <input id="stockOnly" type="checkbox">
-            <span>Chỉ còn hàng</span>
+            <span id="ownedOnlyLabel">Chỉ có thẻ</span>
           </label>
         </div>
 
@@ -53,7 +53,7 @@
       <section class="card-grid" id="cardGrid" aria-live="polite"></section>
       <section class="empty-state" id="emptyState" hidden>
         <h2>Không tìm thấy thẻ phù hợp</h2>
-        <p>Thử đổi mùa thẻ, rarity hoặc từ khóa tìm kiếm.</p>
+        <p>Thử đổi bộ thẻ, rarity hoặc từ khóa tìm kiếm.</p>
       </section>
     </main>
 
@@ -68,10 +68,13 @@
             <span class="rarity-pill"></span>
           </div>
           <h2 class="card-name"></h2>
-          <p class="card-team"></p>
+          <p class="card-status"></p>
           <div class="stock-row">
             <span class="stock-label">Tồn kho</span>
             <strong class="stock-value"></strong>
+          </div>
+          <div class="movement-row">
+            <span class="movement-value"></span>
           </div>
           <a class="buy-link" href="#" target="_blank" rel="noopener">Mua trên Shopee</a>
         </div>
