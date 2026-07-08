@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tra cứu thẻ Panini</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="lookup-panel" aria-labelledby="page-title">
+        <div class="brand-bar">
+          <div>
+            <p class="eyebrow">Card checklist</p>
+            <h1 id="page-title">Tra cứu thẻ Panini</h1>
+          </div>
+          <div class="brand-actions">
+            <a class="shop-link" href="https://shopee.vn/fcmvn_com" target="_blank" rel="noopener">Shopee: fcmvn_com</a>
+            <div class="season-badge" id="seasonBadge">Đang tải dữ liệu</div>
+          </div>
+        </div>
+
+        <div class="controls" aria-label="Bộ lọc tra cứu">
+          <label class="field">
+            <span>Mùa thẻ</span>
+            <select id="seasonSelect"></select>
+          </label>
+
+          <label class="field search-field">
+            <span>Tìm kiếm</span>
+            <input id="searchInput" type="search" placeholder="Nhập mã thẻ hoặc tên cầu thủ">
+          </label>
+
+          <label class="field">
+            <span>Rarity</span>
+            <select id="raritySelect">
+              <option value="">Tất cả rarity</option>
+            </select>
+          </label>
+
+          <label class="toggle-field">
+            <input id="stockOnly" type="checkbox">
+            <span>Chỉ còn hàng</span>
+          </label>
+        </div>
+
+        <div class="summary-row">
+          <p id="resultSummary">0 thẻ</p>
+          <button class="ghost-button" id="clearFilters" type="button">Xóa lọc</button>
+        </div>
+      </section>
+
+      <section class="card-grid" id="cardGrid" aria-live="polite"></section>
+      <section class="empty-state" id="emptyState" hidden>
+        <h2>Không tìm thấy thẻ phù hợp</h2>
+        <p>Thử đổi mùa thẻ, rarity hoặc từ khóa tìm kiếm.</p>
+      </section>
+    </main>
+
+    <template id="cardTemplate">
+      <article class="card-item">
+        <div class="card-image-wrap">
+          <img class="card-image" alt="" loading="lazy">
+        </div>
+        <div class="card-content">
+          <div class="card-topline">
+            <span class="card-code"></span>
+            <span class="rarity-pill"></span>
+          </div>
+          <h2 class="card-name"></h2>
+          <p class="card-team"></p>
+          <div class="stock-row">
+            <span class="stock-label">Tồn kho</span>
+            <strong class="stock-value"></strong>
+          </div>
+          <a class="buy-link" href="#" target="_blank" rel="noopener">Mua trên Shopee</a>
+        </div>
+      </article>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>

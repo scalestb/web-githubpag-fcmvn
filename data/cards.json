@@ -1,0 +1,122 @@
+[
+  {
+    "seasonId": "panini-world-cup-2026",
+    "code": "PWC26-001",
+    "name": "Lionel Messi",
+    "team": "Argentina",
+    "image": "assets/cards/pwc26-001.svg",
+    "rarity": "Legend",
+    "stock": 4,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-world-cup-2026",
+    "code": "PWC26-007",
+    "name": "Kylian Mbappe",
+    "team": "France",
+    "image": "assets/cards/pwc26-007.svg",
+    "rarity": "Gold",
+    "stock": 2,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-world-cup-2026",
+    "code": "PWC26-010",
+    "name": "Jude Bellingham",
+    "team": "England",
+    "image": "assets/cards/pwc26-010.svg",
+    "rarity": "Rainbow Foil",
+    "stock": 8,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-world-cup-2026",
+    "code": "PWC26-018",
+    "name": "Vinicius Junior",
+    "team": "Brazil",
+    "image": "assets/cards/pwc26-018.svg",
+    "rarity": "Silver",
+    "stock": 6,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-world-cup-2026",
+    "code": "PWC26-021",
+    "name": "Cristiano Ronaldo",
+    "team": "Portugal",
+    "image": "assets/cards/pwc26-021.svg",
+    "rarity": "Legend",
+    "stock": 0,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-world-cup-2026",
+    "code": "PWC26-029",
+    "name": "Pedri",
+    "team": "Spain",
+    "image": "assets/cards/pwc26-029.svg",
+    "rarity": "Base",
+    "stock": 15,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-kayou-wc-2026",
+    "code": "KWC26-A01",
+    "name": "Erling Haaland",
+    "team": "Norway",
+    "image": "assets/cards/kwc26-a01.svg",
+    "rarity": "Top Scorer",
+    "stock": 3,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-kayou-wc-2026",
+    "code": "KWC26-A08",
+    "name": "Lamine Yamal",
+    "team": "Spain",
+    "image": "assets/cards/kwc26-a08.svg",
+    "rarity": "Rookie",
+    "stock": 10,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-kayou-wc-2026",
+    "code": "KWC26-B11",
+    "name": "Florian Wirtz",
+    "team": "Germany",
+    "image": "assets/cards/kwc26-b11.svg",
+    "rarity": "Silver",
+    "stock": 5,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-kayou-wc-2026",
+    "code": "KWC26-B18",
+    "name": "Son Heung-min",
+    "team": "Korea Republic",
+    "image": "assets/cards/kwc26-b18.svg",
+    "rarity": "Captain",
+    "stock": 1,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-kayou-wc-2026",
+    "code": "KWC26-C04",
+    "name": "Endrick",
+    "team": "Brazil",
+    "image": "assets/cards/kwc26-c04.svg",
+    "rarity": "Rookie",
+    "stock": 7,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  },
+  {
+    "seasonId": "panini-kayou-wc-2026",
+    "code": "KWC26-C16",
+    "name": "Christian Pulisic",
+    "team": "United States",
+    "image": "assets/cards/kwc26-c16.svg",
+    "rarity": "Gold Parallel",
+    "stock": 0,
+    "shopeeUrl": "https://shopee.vn/fcmvn_com"
+  }
+]

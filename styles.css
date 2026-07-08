@@ -1,0 +1,404 @@
+:root {
+  color-scheme: light;
+  --bg: #f4f7f2;
+  --surface: #ffffff;
+  --surface-strong: #edf4ed;
+  --ink: #172119;
+  --muted: #647066;
+  --line: #d9e3d8;
+  --accent: #16734a;
+  --accent-strong: #0e5636;
+  --gold: #b47a17;
+  --danger: #b42318;
+  --shadow: 0 18px 45px rgba(20, 35, 24, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(120deg, rgba(22, 115, 74, 0.12), transparent 38%),
+    linear-gradient(240deg, rgba(180, 122, 23, 0.12), transparent 35%),
+    var(--bg);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 44px;
+}
+
+.lookup-panel {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 24px;
+}
+
+.brand-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1;
+}
+
+.season-badge {
+  flex: 0 0 auto;
+  max-width: 280px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: var(--surface-strong);
+  color: var(--accent-strong);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.brand-actions {
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+}
+
+.shop-link,
+.buy-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 800;
+  text-decoration: none;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+
+.shop-link {
+  padding: 0 14px;
+  white-space: nowrap;
+}
+
+.shop-link:hover,
+.buy-link:hover {
+  background: var(--accent-strong);
+  transform: translateY(-1px);
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: minmax(210px, 1fr) minmax(260px, 1.5fr) minmax(180px, 0.8fr) auto;
+  gap: 14px;
+  align-items: end;
+}
+
+.field,
+.toggle-field {
+  display: grid;
+  gap: 7px;
+}
+
+.field span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+select,
+input[type="search"] {
+  width: 100%;
+  min-height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  padding: 0 13px;
+  outline: none;
+}
+
+select:focus,
+input[type="search"]:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(22, 115, 74, 0.16);
+}
+
+.toggle-field {
+  min-height: 46px;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0 12px;
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.toggle-field input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+}
+
+.summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+  color: var(--muted);
+}
+
+.summary-row p {
+  margin: 0;
+  font-weight: 700;
+}
+
+.ghost-button {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--accent-strong);
+  cursor: pointer;
+  font-weight: 700;
+  padding: 0 14px;
+}
+
+.ghost-button:hover {
+  border-color: var(--accent);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.card-item {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 12px 28px rgba(20, 35, 24, 0.08);
+}
+
+.card-item.in-stock {
+  border-color: rgba(22, 115, 74, 0.42);
+  background: #f4fbf6;
+}
+
+.card-item.in-stock .card-image-wrap {
+  background: #dfeee3;
+}
+
+.card-item.out-of-stock {
+  border-color: #cfd6cf;
+  background: #eef0ee;
+  opacity: 0.7;
+}
+
+.card-item.out-of-stock .card-image {
+  filter: grayscale(1);
+}
+
+.card-image-wrap {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 4;
+  background: #e8efe7;
+  border-bottom: 1px solid var(--line);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+
+.card-topline,
+.stock-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.card-code {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.rarity-pill {
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: #eff5f0;
+  color: var(--accent-strong);
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.rarity-pill.gold {
+  background: #fff3d8;
+  color: var(--gold);
+}
+
+.rarity-pill.red {
+  background: #fff0ee;
+  color: var(--danger);
+}
+
+.rarity-pill.blue {
+  background: #eaf3ff;
+  color: #235a97;
+}
+
+.card-name {
+  min-height: 2.45em;
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.22;
+}
+
+.card-team {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.stock-row {
+  border-top: 1px solid var(--line);
+  padding-top: 11px;
+}
+
+.buy-link {
+  width: 100%;
+  margin-top: 2px;
+  padding: 0 12px;
+  font-size: 0.94rem;
+}
+
+.stock-label {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.stock-value {
+  color: var(--accent-strong);
+  font-size: 1rem;
+}
+
+.stock-value.out {
+  color: var(--danger);
+}
+
+.empty-state {
+  margin-top: 22px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 34px 20px;
+  text-align: center;
+}
+
+.empty-state h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+
+.empty-state p {
+  margin: 0;
+  color: var(--muted);
+}
+
+@media (max-width: 860px) {
+  .controls {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .search-field {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .app-shell {
+    width: min(100% - 20px, 1180px);
+    padding-top: 12px;
+  }
+
+  .lookup-panel {
+    padding: 16px;
+  }
+
+  .brand-bar {
+    display: grid;
+    gap: 14px;
+  }
+
+  .season-badge {
+    max-width: none;
+  }
+
+  .brand-actions {
+    justify-items: stretch;
+  }
+
+  .controls {
+    grid-template-columns: 1fr;
+  }
+
+  .search-field {
+    grid-column: auto;
+  }
+
+  .summary-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .ghost-button {
+    width: 100%;
+  }
+}
