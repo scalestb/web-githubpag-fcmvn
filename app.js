@@ -282,7 +282,9 @@ function bindEvents() {
   });
 
   clearFilters.addEventListener("click", resetFilters);
+}
 
+function bindViewEvents() {
   viewButtons.forEach((button) => {
     button.addEventListener("click", () => {
       setViewMode(button.dataset.view);
@@ -312,7 +314,6 @@ async function loadData() {
     populateSeasons();
     populateRarities();
     bindEvents();
-    setViewMode(state.viewMode, false);
     renderCards();
   } catch (error) {
     cardGrid.innerHTML = "";
@@ -325,4 +326,6 @@ async function loadData() {
   }
 }
 
+setViewMode(state.viewMode, false);
+bindViewEvents();
 loadData();

@@ -3,8 +3,20 @@ setlocal
 cd /d "%~dp0"
 
 set PORT=5502
+set ROOT=%~dp0
+
+if not exist "%ROOT%index.html" (
+  echo Cannot find index.html in:
+  echo %ROOT%
+  echo.
+  echo Please run this file from the project folder.
+  pause
+  exit /b 1
+)
 
 echo Starting local static server for Panini card lookup...
+echo Serving folder:
+echo %ROOT%
 echo.
 echo Open this URL in your browser:
 echo http://127.0.0.1:%PORT%/
@@ -16,4 +28,4 @@ echo.
 echo Press Ctrl+C in this window to stop the server.
 echo.
 
-python -m http.server %PORT% --directory "%~dp0"
+python -m http.server %PORT% --directory "%ROOT%"
