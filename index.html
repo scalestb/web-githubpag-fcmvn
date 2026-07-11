@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tra cứu thẻ Panini</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -46,7 +47,14 @@
 
         <div class="summary-row">
           <p id="resultSummary">0 thẻ</p>
-          <button class="ghost-button" id="clearFilters" type="button">Xóa lọc</button>
+          <div class="summary-actions">
+            <div class="view-toggle" role="group" aria-label="Chế độ xem">
+              <button class="view-button is-active" type="button" data-view="grid" aria-pressed="true">Grid</button>
+              <button class="view-button" type="button" data-view="list" aria-pressed="false">List</button>
+              <button class="view-button" type="button" data-view="compact" aria-pressed="false">Gọn</button>
+            </div>
+            <button class="ghost-button" id="clearFilters" type="button">Xóa lọc</button>
+          </div>
         </div>
       </section>
 

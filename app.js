@@ -9,6 +9,18 @@ const cardTemplate = document.querySelector("#cardTemplate");
 const resultSummary = document.querySelector("#resultSummary");
 const emptyState = document.querySelector("#emptyState");
 const seasonBadge = document.querySelector("#seasonBadge");
+const viewButtons = document.querySelectorAll(".view-button");
+
+const viewModes = ["grid", "list", "compact"];
+
+function getSavedViewMode() {
+  try {
+    const viewMode = localStorage.getItem("cardViewMode");
+    return viewModes.includes(viewMode) ? viewMode : "grid";
+  } catch (error) {
+    return "grid";
+  }
+}
 
 const state = {
   seasons: [],
@@ -17,7 +29,8 @@ const state = {
   search: "",
   rarity: "",
   ownedOnly: false,
-  hasSeasonFilter: false
+  hasSeasonFilter: false,
+  viewMode: getSavedViewMode()
 };
 
 const rarityClasses = {
@@ -160,6 +173,28 @@ function getFilteredCards() {
   });
 }
 
+function setViewMode(viewMode, shouldPersist = true) {
+  const nextViewMode = viewModes.includes(viewMode) ? viewMode : "grid";
+  state.viewMode = nextViewMode;
+
+  cardGrid.classList.remove(...viewModes.map((mode) => `is-${mode}`));
+  cardGrid.classList.add(`is-${nextViewMode}`);
+
+  viewButtons.forEach((button) => {
+    const isActive = button.dataset.view === nextViewMode;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+
+  if (shouldPersist) {
+    try {
+      localStorage.setItem("cardViewMode", nextViewMode);
+    } catch (error) {
+      // Ignore private browsing storage errors.
+    }
+  }
+}
+
 function renderCards() {
   const cards = getFilteredCards();
   const seasonName = getCurrentSeasonName();
@@ -247,6 +282,12 @@ function bindEvents() {
   });
 
   clearFilters.addEventListener("click", resetFilters);
+
+  viewButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      setViewMode(button.dataset.view);
+    });
+  });
 }
 
 async function loadData() {
@@ -271,6 +312,7 @@ async function loadData() {
     populateSeasons();
     populateRarities();
     bindEvents();
+    setViewMode(state.viewMode, false);
     renderCards();
   } catch (error) {
     cardGrid.innerHTML = "";

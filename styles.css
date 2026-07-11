@@ -192,6 +192,43 @@ input[type="search"]:focus {
   font-weight: 700;
 }
 
+.summary-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.view-toggle {
+  display: inline-grid;
+  grid-template-columns: repeat(3, minmax(58px, 1fr));
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.view-button {
+  min-height: 38px;
+  border: 0;
+  border-right: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-weight: 800;
+  padding: 0 10px;
+}
+
+.view-button:last-child {
+  border-right: 0;
+}
+
+.view-button:hover,
+.view-button.is-active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
 .ghost-button {
   min-height: 38px;
   border: 1px solid var(--line);
@@ -214,12 +251,23 @@ input[type="search"]:focus {
   margin-top: 22px;
 }
 
+.card-grid.is-list,
+.card-grid.is-compact {
+  grid-template-columns: 1fr;
+}
+
 .card-item {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--surface);
   box-shadow: 0 12px 28px rgba(20, 35, 24, 0.08);
+}
+
+.card-grid.is-list .card-item,
+.card-grid.is-compact .card-item {
+  display: grid;
+  grid-template-columns: 116px minmax(0, 1fr);
 }
 
 .card-item.has-card {
@@ -250,6 +298,23 @@ input[type="search"]:focus {
   border-bottom: 1px solid var(--line);
 }
 
+.card-grid.is-list .card-image-wrap,
+.card-grid.is-compact .card-image-wrap {
+  width: 116px;
+  min-height: 154px;
+  border-right: 1px solid var(--line);
+  border-bottom: 0;
+}
+
+.card-grid.is-compact .card-item {
+  grid-template-columns: 76px minmax(0, 1fr);
+}
+
+.card-grid.is-compact .card-image-wrap {
+  width: 76px;
+  min-height: 102px;
+}
+
 .card-image-wrap.missing-image::after {
   content: "Chưa có ảnh";
   color: var(--muted);
@@ -267,6 +332,17 @@ input[type="search"]:focus {
   display: grid;
   gap: 10px;
   padding: 14px;
+}
+
+.card-grid.is-list .card-content,
+.card-grid.is-compact .card-content {
+  align-content: center;
+  min-width: 0;
+}
+
+.card-grid.is-compact .card-content {
+  gap: 6px;
+  padding: 10px;
 }
 
 .card-topline,
@@ -319,6 +395,15 @@ input[type="search"]:focus {
   line-height: 1.22;
 }
 
+.card-grid.is-list .card-name,
+.card-grid.is-compact .card-name {
+  min-height: 0;
+}
+
+.card-grid.is-compact .card-name {
+  font-size: 0.95rem;
+}
+
 .card-status {
   margin: 0;
   font-size: 0.92rem;
@@ -341,6 +426,11 @@ input[type="search"]:focus {
 .movement-row {
   color: var(--muted);
   font-size: 0.86rem;
+}
+
+.card-grid.is-compact .movement-row,
+.card-grid.is-compact .buy-link {
+  display: none;
 }
 
 .buy-link {
@@ -395,41 +485,195 @@ input[type="search"]:focus {
 
 @media (max-width: 620px) {
   .app-shell {
-    width: min(100% - 20px, 1180px);
-    padding-top: 12px;
+    width: min(100% - 12px, 1180px);
+    padding: 8px 0 24px;
   }
 
   .lookup-panel {
-    padding: 16px;
+    padding: 10px;
   }
 
   .brand-bar {
     display: grid;
-    gap: 14px;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .eyebrow {
+    margin-bottom: 3px;
+    font-size: 0.68rem;
+  }
+
+  h1 {
+    font-size: 1.45rem;
+    line-height: 1.08;
   }
 
   .season-badge {
     max-width: none;
+    min-height: 34px;
+    border-radius: 8px;
+    padding: 7px 9px;
+    font-size: 0.78rem;
   }
 
   .brand-actions {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     justify-items: stretch;
+    gap: 8px;
   }
 
   .controls {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 
   .search-field {
-    grid-column: auto;
+    grid-column: 1 / -1;
+  }
+
+  .field,
+  .toggle-field {
+    gap: 4px;
+  }
+
+  .field span {
+    font-size: 0.74rem;
+  }
+
+  select,
+  input[type="search"],
+  .toggle-field {
+    min-height: 40px;
+    border-radius: 7px;
+    font-size: 0.88rem;
+  }
+
+  select,
+  input[type="search"] {
+    padding: 0 9px;
+  }
+
+  .toggle-field {
+    grid-column: 1 / -1;
+    padding: 0 9px;
+  }
+
+  .toggle-field input {
+    width: 16px;
+    height: 16px;
   }
 
   .summary-row {
     align-items: stretch;
     flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .summary-row p {
+    font-size: 0.86rem;
+  }
+
+  .summary-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+  }
+
+  .view-toggle {
+    grid-template-columns: repeat(3, minmax(48px, 1fr));
+  }
+
+  .view-button,
+  .ghost-button {
+    min-height: 36px;
+    font-size: 0.82rem;
+    padding: 0 9px;
   }
 
   .ghost-button {
-    width: 100%;
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .card-grid {
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .card-grid.is-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card-grid.is-list .card-item {
+    grid-template-columns: 88px minmax(0, 1fr);
+  }
+
+  .card-grid.is-list .card-image-wrap {
+    width: 88px;
+    min-height: 118px;
+  }
+
+  .card-grid.is-compact .card-item {
+    grid-template-columns: 62px minmax(0, 1fr);
+  }
+
+  .card-grid.is-compact .card-image-wrap {
+    width: 62px;
+    min-height: 82px;
+  }
+
+  .card-content {
+    gap: 6px;
+    padding: 9px;
+  }
+
+  .card-topline,
+  .stock-row {
+    gap: 6px;
+  }
+
+  .card-code {
+    font-size: 0.75rem;
+  }
+
+  .rarity-pill {
+    max-width: 100%;
+    overflow: hidden;
+    padding: 4px 6px;
+    font-size: 0.66rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .card-name {
+    min-height: 2.4em;
+    font-size: 0.88rem;
+  }
+
+  .card-grid.is-list .card-name,
+  .card-grid.is-compact .card-name {
+    font-size: 0.92rem;
+  }
+
+  .card-status,
+  .stock-label,
+  .stock-value,
+  .movement-row {
+    font-size: 0.76rem;
+  }
+
+  .stock-row {
+    padding-top: 7px;
+  }
+
+  .buy-link {
+    min-height: 34px;
+    font-size: 0.8rem;
+  }
+
+  .card-grid.is-grid .movement-row {
+    display: none;
   }
 }
