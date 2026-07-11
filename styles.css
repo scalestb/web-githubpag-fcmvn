@@ -202,6 +202,63 @@ input[type="search"]:focus {
   margin-top: 8px;
 }
 
+.pagination {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.pagination[hidden] {
+  display: none;
+}
+
+.page-button {
+  min-height: 30px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--accent-strong);
+  cursor: pointer;
+  font-size: 0.74rem;
+  font-weight: 900;
+  padding: 0 9px;
+}
+
+.page-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.page-info {
+  color: var(--ink);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.page-size {
+  display: inline-grid;
+  grid-template-columns: auto 52px;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.page-size select {
+  min-height: 30px;
+  padding: 0 6px;
+  font-size: 0.76rem;
+}
+
 .card-item {
   display: grid;
   grid-template-columns: 56px minmax(0, 1fr);
@@ -408,6 +465,21 @@ input[type="search"]:focus {
   .card-list {
     gap: 8px;
     margin-top: 12px;
+  }
+
+  .pagination {
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .page-info {
+    order: 3;
+    text-align: right;
+  }
+
+  .page-size {
+    order: 4;
   }
 
   .card-item {

@@ -6,6 +6,11 @@ const cardList = document.querySelector("#cardList");
 const cardTemplate = document.querySelector("#cardTemplate");
 const resultSummary = document.querySelector("#resultSummary");
 const emptyState = document.querySelector("#emptyState");
+const pagination = document.querySelector("#pagination");
+const prevPage = document.querySelector("#prevPage");
+const nextPage = document.querySelector("#nextPage");
+const pageInfo = document.querySelector("#pageInfo");
+const pageSizeSelect = document.querySelector("#pageSizeSelect");
 
 const DEFAULT_IMAGE = "assets/card-placeholder.svg";
 const SHOPEE_URL = "https://shopee.vn/fcmvn_com";
@@ -15,7 +20,9 @@ const state = {
   cards: [],
   currentSeasonId: "",
   search: "",
-  stockOnly: false
+  stockOnly: false,
+  currentPage: 1,
+  pageSize: 30
 };
 
 const rarityClasses = {
@@ -106,6 +113,25 @@ function getFilteredCards() {
   });
 }
 
+function getPageCount(totalCards) {
+  return Math.max(1, Math.ceil(totalCards / state.pageSize));
+}
+
+function resetPage() {
+  state.currentPage = 1;
+}
+
+function updatePagination(totalCards) {
+  const pageCount = getPageCount(totalCards);
+  state.currentPage = Math.min(Math.max(1, state.currentPage), pageCount);
+
+  pagination.hidden = totalCards === 0;
+  pageInfo.textContent = `Trang ${state.currentPage}/${pageCount}`;
+  prevPage.disabled = state.currentPage <= 1;
+  nextPage.disabled = state.currentPage >= pageCount;
+  pageSizeSelect.value = String(state.pageSize);
+}
+
 function populateSeasons() {
   seasonSelect.innerHTML = state.seasons
     .map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name)}</option>`)
@@ -118,12 +144,21 @@ function populateSeasons() {
 function renderCards() {
   const cards = getFilteredCards();
   const totalStock = state.cards.reduce((sum, card) => sum + Number(card.stock || 0), 0);
+  const pageCount = getPageCount(cards.length);
+
+  state.currentPage = Math.min(Math.max(1, state.currentPage), pageCount);
+
+  const startIndex = (state.currentPage - 1) * state.pageSize;
+  const pageCards = cards.slice(startIndex, startIndex + state.pageSize);
+  const rangeStart = cards.length === 0 ? 0 : startIndex + 1;
+  const rangeEnd = Math.min(startIndex + state.pageSize, cards.length);
 
   cardList.innerHTML = "";
   emptyState.hidden = cards.length > 0;
-  resultSummary.textContent = `${cards.length}/${state.cards.length} thẻ • Tồn ${totalStock}`;
+  resultSummary.textContent = `${rangeStart}-${rangeEnd}/${cards.length} thẻ • Tồn ${totalStock}`;
+  updatePagination(cards.length);
 
-  cards.forEach((card) => {
+  pageCards.forEach((card) => {
     const node = cardTemplate.content.cloneNode(true);
     const item = node.querySelector(".card-item");
     const image = node.querySelector(".card-image");
@@ -171,12 +206,14 @@ function resetFilters() {
   state.stockOnly = false;
   searchInput.value = "";
   stockOnly.checked = false;
+  resetPage();
   renderCards();
 }
 
 function setLoading(message) {
   cardList.innerHTML = "";
   emptyState.hidden = true;
+  pagination.hidden = true;
   resultSummary.textContent = message;
 }
 
@@ -191,6 +228,7 @@ async function changeSeason(seasonId) {
 
   state.currentSeasonId = season.id;
   seasonSelect.value = season.id;
+  resetPage();
   setLoading(`Đang tải ${season.name}`);
 
   try {
@@ -214,15 +252,35 @@ function bindEvents() {
 
   searchInput.addEventListener("input", (event) => {
     state.search = event.target.value;
+    resetPage();
     renderCards();
   });
 
   stockOnly.addEventListener("change", (event) => {
     state.stockOnly = event.target.checked;
+    resetPage();
     renderCards();
   });
 
   clearFilters.addEventListener("click", resetFilters);
+
+  prevPage.addEventListener("click", () => {
+    state.currentPage -= 1;
+    renderCards();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  nextPage.addEventListener("click", () => {
+    state.currentPage += 1;
+    renderCards();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  pageSizeSelect.addEventListener("change", (event) => {
+    state.pageSize = Number(event.target.value) || 30;
+    resetPage();
+    renderCards();
+  });
 }
 
 async function init() {

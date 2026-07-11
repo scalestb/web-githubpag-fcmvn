@@ -45,6 +45,19 @@
       </section>
 
       <section class="card-list" id="cardList" aria-live="polite"></section>
+      <nav class="pagination" id="pagination" aria-label="Phân trang danh sách thẻ" hidden>
+        <button class="page-button" id="prevPage" type="button">Trước</button>
+        <span class="page-info" id="pageInfo">Trang 1/1</span>
+        <button class="page-button" id="nextPage" type="button">Sau</button>
+        <label class="page-size">
+          <span>Hiển thị</span>
+          <select id="pageSizeSelect">
+            <option value="30">30</option>
+            <option value="60">60</option>
+            <option value="100">100</option>
+          </select>
+        </label>
+      </nav>
       <section class="empty-state" id="emptyState" hidden>
         <h2>Không tìm thấy thẻ phù hợp</h2>
         <p>Thử đổi mùa thẻ hoặc từ khóa tìm kiếm.</p>
