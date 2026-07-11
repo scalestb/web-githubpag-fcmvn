@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 240" role="img" aria-label="Chưa có ảnh thẻ">
+  <rect width="180" height="240" rx="18" fill="#edf4ed"/>
+  <rect x="18" y="18" width="144" height="204" rx="14" fill="#ffffff" stroke="#d9e3d8" stroke-width="4"/>
+  <circle cx="90" cy="82" r="28" fill="#16734a" opacity="0.16"/>
+  <path d="M62 142h56M72 166h36" stroke="#16734a" stroke-width="10" stroke-linecap="round" opacity="0.75"/>
+  <text x="90" y="206" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#647066">NO IMAGE</text>
+</svg>

@@ -9,59 +9,42 @@
   </head>
   <body>
     <main class="app-shell">
-      <section class="lookup-panel" aria-labelledby="page-title">
+      <section class="lookup-panel" aria-labelledby="pageTitle">
         <div class="brand-bar">
           <div>
             <p class="eyebrow">Card checklist</p>
-            <h1 id="page-title">Tra cứu thẻ Panini</h1>
+            <h1 id="pageTitle">Tra cứu thẻ Panini</h1>
           </div>
-          <div class="brand-actions">
-            <a class="shop-link" href="https://shopee.vn/fcmvn_com" target="_blank" rel="noopener">Shopee: fcmvn_com</a>
-            <div class="season-badge" id="seasonBadge">Đang tải dữ liệu</div>
-          </div>
+          <a class="shop-link" href="https://shopee.vn/fcmvn_com" target="_blank" rel="noopener">Shopee</a>
         </div>
 
         <div class="controls" aria-label="Bộ lọc tra cứu">
-          <label class="field">
-            <span>Bộ thẻ</span>
+          <label class="field season-field">
+            <span>Mùa thẻ</span>
             <select id="seasonSelect"></select>
           </label>
 
           <label class="field search-field">
             <span>Tìm kiếm</span>
-            <input id="searchInput" type="search" placeholder="Nhập số thẻ, tên hoặc rarity">
-          </label>
-
-          <label class="field">
-            <span>Rarity</span>
-            <select id="raritySelect">
-              <option value="">Tất cả rarity</option>
-            </select>
+            <input id="searchInput" type="search" placeholder="Số thẻ hoặc tên">
           </label>
 
           <label class="toggle-field">
             <input id="stockOnly" type="checkbox">
-            <span id="ownedOnlyLabel">Chỉ có thẻ</span>
+            <span id="ownedOnlyLabel">Có hàng</span>
           </label>
         </div>
 
         <div class="summary-row">
-          <p id="resultSummary">0 thẻ</p>
-          <div class="summary-actions">
-            <div class="view-toggle" role="group" aria-label="Chế độ xem">
-              <button class="view-button is-active" type="button" data-view="grid" aria-pressed="true">Grid</button>
-              <button class="view-button" type="button" data-view="list" aria-pressed="false">List</button>
-              <button class="view-button" type="button" data-view="compact" aria-pressed="false">Gọn</button>
-            </div>
-            <button class="ghost-button" id="clearFilters" type="button">Xóa lọc</button>
-          </div>
+          <p id="resultSummary">Đang tải dữ liệu</p>
+          <button class="ghost-button" id="clearFilters" type="button">Xóa lọc</button>
         </div>
       </section>
 
-      <section class="card-grid" id="cardGrid" aria-live="polite"></section>
+      <section class="card-list" id="cardList" aria-live="polite"></section>
       <section class="empty-state" id="emptyState" hidden>
         <h2>Không tìm thấy thẻ phù hợp</h2>
-        <p>Thử đổi bộ thẻ, rarity hoặc từ khóa tìm kiếm.</p>
+        <p>Thử đổi mùa thẻ hoặc từ khóa tìm kiếm.</p>
       </section>
     </main>
 
@@ -76,10 +59,13 @@
             <span class="rarity-pill"></span>
           </div>
           <h2 class="card-name"></h2>
-          <p class="card-status"></p>
-          <div class="stock-row">
-            <span class="stock-label">Tồn kho</span>
-            <strong class="stock-value"></strong>
+          <div class="rarity-line">
+            <span class="rarity-label">Rarity</span>
+            <span class="rarity-text"></span>
+          </div>
+          <div class="card-meta">
+            <span class="card-status"></span>
+            <span class="stock-value"></span>
           </div>
           <div class="movement-row">
             <span class="movement-value"></span>

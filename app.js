@@ -1,36 +1,21 @@
 const seasonSelect = document.querySelector("#seasonSelect");
-const raritySelect = document.querySelector("#raritySelect");
 const searchInput = document.querySelector("#searchInput");
 const stockOnly = document.querySelector("#stockOnly");
-const ownedOnlyLabel = document.querySelector("#ownedOnlyLabel");
 const clearFilters = document.querySelector("#clearFilters");
-const cardGrid = document.querySelector("#cardGrid");
+const cardList = document.querySelector("#cardList");
 const cardTemplate = document.querySelector("#cardTemplate");
 const resultSummary = document.querySelector("#resultSummary");
 const emptyState = document.querySelector("#emptyState");
-const seasonBadge = document.querySelector("#seasonBadge");
-const viewButtons = document.querySelectorAll(".view-button");
 
-const viewModes = ["grid", "list", "compact"];
-
-function getSavedViewMode() {
-  try {
-    const viewMode = localStorage.getItem("cardViewMode");
-    return viewModes.includes(viewMode) ? viewMode : "grid";
-  } catch (error) {
-    return "grid";
-  }
-}
+const DEFAULT_IMAGE = "assets/card-placeholder.svg";
+const SHOPEE_URL = "https://shopee.vn/fcmvn_com";
 
 const state = {
   seasons: [],
   cards: [],
-  currentSeason: "",
+  currentSeasonId: "",
   search: "",
-  rarity: "",
-  ownedOnly: false,
-  hasSeasonFilter: false,
-  viewMode: getSavedViewMode()
+  stockOnly: false
 };
 
 const rarityClasses = {
@@ -54,216 +39,177 @@ function normalizeText(value) {
   return (value ?? "").toString().trim().toLowerCase();
 }
 
-function formatStock(amount) {
-  return Number(amount) > 0 ? `${amount} thẻ` : "Hết hàng";
+function escapeHtml(value) {
+  return (value ?? "")
+    .toString()
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
 }
 
 function formatCardNumber(number) {
-  return `#${String(number).padStart(3, "0")}`;
+  return `#${String(number ?? "").padStart(3, "0")}`;
 }
 
 function getCardCode(card) {
   return card.code || formatCardNumber(card.number);
 }
 
-function getImageCandidates(card) {
-  const explicitImage = card.imageUrl || card.image;
-  const localCandidates = card.number
-    ? ["png", "jpg", "jpeg", "webp"].map((extension) => {
-        const baseName = String(card.number).padStart(3, "0");
-        return `assets/cards/${baseName}.${extension}`;
-      })
-    : [];
-
-  if (explicitImage) {
-    return [explicitImage, ...localCandidates];
+function getSeasonCardsUrl(season) {
+  if (season.cardsUrl) {
+    return season.cardsUrl;
   }
 
-  return localCandidates;
+  return `data/cards/${season.id}.json`;
 }
 
-function cardMatchesToggle(card) {
-  if (!state.ownedOnly) {
-    return true;
+async function fetchJson(url) {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Không đọc được ${url}`);
   }
 
-  return state.hasSeasonFilter ? Number(card.stock) > 0 : card.hasCard;
+  return response.json();
 }
 
-function cardIsAvailable(card) {
-  return state.hasSeasonFilter ? Number(card.stock) > 0 : card.hasCard;
-}
+async function loadCardsForSeason(season) {
+  const primaryUrl = getSeasonCardsUrl(season);
 
-function applyImageFallback(image, card) {
-  const candidates = getImageCandidates(card);
-  let index = 0;
+  try {
+    return await fetchJson(primaryUrl);
+  } catch (error) {
+    const fallbackUrl = `cards/${season.id}.json`;
 
-  if (candidates.length === 0) {
-    image.closest(".card-image-wrap")?.classList.add("missing-image");
-    return;
-  }
-
-  image.onerror = () => {
-    index += 1;
-
-    if (index < candidates.length) {
-      image.src = candidates[index];
-      return;
+    if (primaryUrl === fallbackUrl) {
+      throw error;
     }
 
-    image.onerror = null;
-    image.removeAttribute("src");
-    image.closest(".card-image-wrap")?.classList.add("missing-image");
-  };
-
-  image.src = candidates[0];
-}
-
-function populateSeasons() {
-  seasonSelect.disabled = !state.hasSeasonFilter;
-
-  if (!state.hasSeasonFilter) {
-    const label = state.seasons[0]?.name || "Tất cả thẻ";
-    seasonSelect.innerHTML = `<option value="">${label}</option>`;
-    state.currentSeason = "";
-    seasonSelect.value = "";
-    return;
+    return fetchJson(fallbackUrl);
   }
-
-  seasonSelect.innerHTML = state.seasons
-    .map((season) => `<option value="${season.id}">${season.name}</option>`)
-    .join("");
-
-  state.currentSeason = state.seasons[0]?.id || "";
-  seasonSelect.value = state.currentSeason;
 }
 
-function populateRarities() {
-  const rarities = [...new Set(
-    state.cards
-      .filter((card) => !state.hasSeasonFilter || card.seasonId === state.currentSeason)
-      .map((card) => card.rarity)
-  )].sort();
-
-  raritySelect.innerHTML = [
-    '<option value="">Tất cả rarity</option>',
-    ...rarities.map((rarity) => `<option value="${rarity}">${rarity}</option>`)
-  ].join("");
-}
-
-function getCurrentSeasonName() {
-  if (!state.hasSeasonFilter) {
-    return state.seasons[0]?.name || "Checklist thẻ";
-  }
-
-  return state.seasons.find((season) => season.id === state.currentSeason)?.name || "";
+function cardHasStock(card) {
+  return Number(card.stock) > 0;
 }
 
 function getFilteredCards() {
   const query = normalizeText(state.search);
 
   return state.cards.filter((card) => {
-    const belongsToSeason = !state.hasSeasonFilter || card.seasonId === state.currentSeason;
-    const matchesRarity = !state.rarity || card.rarity === state.rarity;
-    const matchesOwnership = cardMatchesToggle(card);
     const searchable = normalizeText(`${card.number} ${getCardCode(card)} ${card.name} ${card.team} ${card.rarity}`);
     const matchesSearch = !query || searchable.includes(query);
+    const matchesStock = !state.stockOnly || cardHasStock(card);
 
-    return belongsToSeason && matchesRarity && matchesOwnership && matchesSearch;
+    return matchesSearch && matchesStock;
   });
 }
 
-function setViewMode(viewMode, shouldPersist = true) {
-  const nextViewMode = viewModes.includes(viewMode) ? viewMode : "grid";
-  state.viewMode = nextViewMode;
+function populateSeasons() {
+  seasonSelect.innerHTML = state.seasons
+    .map((season) => `<option value="${escapeHtml(season.id)}">${escapeHtml(season.name)}</option>`)
+    .join("");
 
-  cardGrid.classList.remove(...viewModes.map((mode) => `is-${mode}`));
-  cardGrid.classList.add(`is-${nextViewMode}`);
-
-  viewButtons.forEach((button) => {
-    const isActive = button.dataset.view === nextViewMode;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
-  });
-
-  if (shouldPersist) {
-    try {
-      localStorage.setItem("cardViewMode", nextViewMode);
-    } catch (error) {
-      // Ignore private browsing storage errors.
-    }
-  }
+  state.currentSeasonId = state.seasons[0]?.id || "";
+  seasonSelect.value = state.currentSeasonId;
 }
 
 function renderCards() {
   const cards = getFilteredCards();
-  const seasonName = getCurrentSeasonName();
+  const totalStock = state.cards.reduce((sum, card) => sum + Number(card.stock || 0), 0);
 
-  cardGrid.innerHTML = "";
+  cardList.innerHTML = "";
   emptyState.hidden = cards.length > 0;
-  resultSummary.textContent = `${cards.length} thẻ được tìm thấy`;
-  seasonBadge.textContent = seasonName || "Chưa có dữ liệu thẻ";
+  resultSummary.textContent = `${cards.length}/${state.cards.length} thẻ • Tồn ${totalStock}`;
 
   cards.forEach((card) => {
     const node = cardTemplate.content.cloneNode(true);
-    const cardItem = node.querySelector(".card-item");
+    const item = node.querySelector(".card-item");
     const image = node.querySelector(".card-image");
     const rarityPill = node.querySelector(".rarity-pill");
-    const cardStatus = node.querySelector(".card-status");
-    const stockValue = node.querySelector(".stock-value");
-    const movementValue = node.querySelector(".movement-value");
+    const rarityText = node.querySelector(".rarity-text");
+    const status = node.querySelector(".card-status");
+    const stock = node.querySelector(".stock-value");
+    const movement = node.querySelector(".movement-value");
     const buyLink = node.querySelector(".buy-link");
 
-    const isAvailable = cardIsAvailable(card);
+    const inStock = cardHasStock(card);
+    const imageUrl = card.imageUrl || DEFAULT_IMAGE;
 
-    cardItem.classList.add(isAvailable ? "has-card" : "missing-card");
-    applyImageFallback(image, card);
-    image.alt = `${card.name} - ${getCardCode(card)}`;
+    item.classList.add(inStock ? "has-stock" : "out-stock");
+    image.src = imageUrl;
+    image.alt = `${card.name || "Thẻ"} - ${getCardCode(card)}`;
+    image.onerror = () => {
+      image.onerror = null;
+      image.src = DEFAULT_IMAGE;
+    };
+
     node.querySelector(".card-code").textContent = getCardCode(card);
-    node.querySelector(".card-name").textContent = card.name;
+    node.querySelector(".card-name").textContent = card.name || "Chưa có tên";
 
-    cardStatus.textContent = isAvailable ? "Có thẻ" : "Chưa có thẻ";
-    cardStatus.classList.add(isAvailable ? "available" : "unavailable");
-
-    rarityPill.textContent = card.rarity;
+    rarityPill.textContent = card.rarity || "Khác";
+    rarityText.textContent = card.rarity || "Khác";
     if (rarityClasses[card.rarity]) {
       rarityPill.classList.add(rarityClasses[card.rarity]);
     }
 
-    stockValue.textContent = formatStock(card.stock);
-    if (Number(card.stock) === 0) {
-      stockValue.classList.add("out");
-    }
+    status.textContent = inStock ? "Có hàng" : "Hết hàng";
+    status.classList.add(inStock ? "available" : "unavailable");
+    stock.textContent = `Tồn ${Number(card.stock || 0)}`;
+    movement.textContent = `Nhập ${card.totalInbound ?? 0} / Xuất ${card.totalOutbound ?? 0}`;
 
-    movementValue.textContent = `Nhập ${card.totalInbound ?? 0} / Xuất ${card.totalOutbound ?? 0}`;
-    buyLink.href = card.shopeeLink || "https://shopee.vn/fcmvn_com";
-    buyLink.setAttribute("aria-label", `Mua ${card.name} trên Shopee`);
+    buyLink.href = card.shopeeLink || SHOPEE_URL;
+    buyLink.setAttribute("aria-label", `Mua ${card.name || "thẻ"} trên Shopee`);
 
-    cardGrid.appendChild(node);
+    cardList.appendChild(node);
   });
 }
 
 function resetFilters() {
   state.search = "";
-  state.rarity = "";
-  state.ownedOnly = false;
+  state.stockOnly = false;
   searchInput.value = "";
-  raritySelect.value = "";
   stockOnly.checked = false;
   renderCards();
 }
 
+function setLoading(message) {
+  cardList.innerHTML = "";
+  emptyState.hidden = true;
+  resultSummary.textContent = message;
+}
+
+async function changeSeason(seasonId) {
+  const season = state.seasons.find((item) => item.id === seasonId) || state.seasons[0];
+
+  if (!season) {
+    state.cards = [];
+    renderCards();
+    return;
+  }
+
+  state.currentSeasonId = season.id;
+  seasonSelect.value = season.id;
+  setLoading(`Đang tải ${season.name}`);
+
+  try {
+    state.cards = await loadCardsForSeason(season);
+    renderCards();
+  } catch (error) {
+    state.cards = [];
+    cardList.innerHTML = "";
+    emptyState.hidden = false;
+    emptyState.querySelector("h2").textContent = "Không tải được danh sách thẻ";
+    emptyState.querySelector("p").textContent = `Kiểm tra file data/cards/${season.id}.json.`;
+    resultSummary.textContent = "Lỗi dữ liệu";
+    console.error(error);
+  }
+}
+
 function bindEvents() {
   seasonSelect.addEventListener("change", (event) => {
-    if (!state.hasSeasonFilter) {
-      return;
-    }
-
-    state.currentSeason = event.target.value;
-    state.rarity = "";
-    raritySelect.value = "";
-    populateRarities();
-    renderCards();
+    changeSeason(event.target.value);
   });
 
   searchInput.addEventListener("input", (event) => {
@@ -271,61 +217,30 @@ function bindEvents() {
     renderCards();
   });
 
-  raritySelect.addEventListener("change", (event) => {
-    state.rarity = event.target.value;
-    renderCards();
-  });
-
   stockOnly.addEventListener("change", (event) => {
-    state.ownedOnly = event.target.checked;
+    state.stockOnly = event.target.checked;
     renderCards();
   });
 
   clearFilters.addEventListener("click", resetFilters);
 }
 
-function bindViewEvents() {
-  viewButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      setViewMode(button.dataset.view);
-    });
-  });
-}
+async function init() {
+  bindEvents();
+  setLoading("Đang tải mùa thẻ");
 
-async function loadData() {
   try {
-    const [seasonsResponse, cardsResponse] = await Promise.all([
-      fetch("data/seasons.json"),
-      fetch("data/cards.json")
-    ]);
-
-    if (!seasonsResponse.ok || !cardsResponse.ok) {
-      throw new Error("Không đọc được dữ liệu JSON.");
-    }
-
-    state.seasons = await seasonsResponse.json();
-    state.cards = await cardsResponse.json();
-    state.hasSeasonFilter = state.cards.some((card) => card.seasonId);
-
-    if (ownedOnlyLabel) {
-      ownedOnlyLabel.textContent = state.hasSeasonFilter ? "Chỉ còn hàng" : "Chỉ có thẻ";
-    }
-
+    state.seasons = await fetchJson("data/seasons.json");
     populateSeasons();
-    populateRarities();
-    bindEvents();
-    renderCards();
+    await changeSeason(state.currentSeasonId);
   } catch (error) {
-    cardGrid.innerHTML = "";
+    cardList.innerHTML = "";
     emptyState.hidden = false;
-    emptyState.querySelector("h2").textContent = "Không tải được dữ liệu";
-    emptyState.querySelector("p").textContent = "Hãy chạy trang qua GitHub Pages hoặc một local static server.";
+    emptyState.querySelector("h2").textContent = "Không tải được mùa thẻ";
+    emptyState.querySelector("p").textContent = "Kiểm tra file data/seasons.json và chạy bằng static server.";
     resultSummary.textContent = "Lỗi dữ liệu";
-    seasonBadge.textContent = "JSON chưa sẵn sàng";
     console.error(error);
   }
 }
 
-setViewMode(state.viewMode, false);
-bindViewEvents();
-loadData();
+init();
