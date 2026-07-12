@@ -7339,9 +7339,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/612.png",
     "shopeeLink": null,
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 613,
