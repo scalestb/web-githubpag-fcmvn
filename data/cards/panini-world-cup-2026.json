@@ -139,9 +139,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/012.png",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 13,
@@ -187,9 +187,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/016.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 17,
@@ -211,9 +211,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/018.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 19,
@@ -223,9 +223,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/019.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 20,
@@ -331,9 +331,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/028.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 29,
@@ -355,9 +355,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/030.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 31,
@@ -439,9 +439,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/037.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 38,
@@ -475,9 +475,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/040.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 41,
@@ -595,9 +595,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/050.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 3,
+    "stock": 2,
     "totalInbound": 3,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 51,
@@ -631,9 +631,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/053.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 54,
@@ -655,9 +655,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/055.jpg",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 56,
@@ -751,9 +751,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/063.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 64,
@@ -763,9 +763,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/064.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 65,
@@ -811,9 +811,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/068.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 69,
@@ -907,9 +907,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/076.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 77,
@@ -919,9 +919,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/077.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 78,
@@ -931,9 +931,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/078.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 79,
@@ -1003,9 +1003,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/084.png",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 85,
@@ -1063,9 +1063,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/089.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 90,
@@ -1183,9 +1183,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/099.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 100,
@@ -1195,9 +1195,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/100.png",
     "shopeeLink": "https://vn.shp.ee/7XW8S8cH",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 101,
@@ -1207,9 +1207,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/101.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 102,
@@ -1219,9 +1219,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/102.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 103,
@@ -1243,9 +1243,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/104.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 105,
@@ -1303,9 +1303,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/109.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 110,
@@ -1339,9 +1339,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/112.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 113,
@@ -1363,9 +1363,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/114.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 115,
@@ -1399,9 +1399,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/117.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 2,
+    "stock": 0,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 2
   },
   {
     "id": 118,
@@ -1471,9 +1471,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/123.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 124,
@@ -1603,9 +1603,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/134.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 135,
@@ -1735,9 +1735,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/145.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 146,
@@ -1759,9 +1759,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/147.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 4,
+    "stock": 3,
     "totalInbound": 4,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 148,
@@ -1795,9 +1795,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/150.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 151,
@@ -1807,9 +1807,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/151.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 152,
@@ -2059,9 +2059,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/172.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 2,
+    "stock": 0,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 2
   },
   {
     "id": 173,
@@ -2071,9 +2071,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/173.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 174,
@@ -2083,9 +2083,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/174.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 175,
@@ -2095,9 +2095,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/175.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 176,
@@ -2119,9 +2119,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/177.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 178,
@@ -2215,9 +2215,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/185.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 2,
+    "stock": 0,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 2
   },
   {
     "id": 186,
@@ -2263,9 +2263,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/189.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 190,
@@ -2359,9 +2359,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/197.png",
     "shopeeLink": "https://vn.shp.ee/w5RVZwSD",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 198,
@@ -2563,9 +2563,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/214.png",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 215,
@@ -2575,9 +2575,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/215.png",
     "shopeeLink": "https://vn.shp.ee/iBaP5Ewk",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 216,
@@ -2647,9 +2647,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/221.png",
     "shopeeLink": "https://vn.shp.ee/Ad3YCjY9",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 222,
@@ -2803,9 +2803,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/234.png",
     "shopeeLink": "https://vn.shp.ee/Ad3YCjY9",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 235,
@@ -2827,9 +2827,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/236.png",
     "shopeeLink": "https://vn.shp.ee/Ad3YCjY9",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 237,
@@ -2875,9 +2875,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/00240.jpg",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 241,
@@ -2995,9 +2995,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/00250.jpg",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 251,
@@ -3211,9 +3211,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/268.png",
     "shopeeLink": "https://vn.shp.ee/Ad3YCjY9",
-    "stock": 3,
+    "stock": 2,
     "totalInbound": 3,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 269,
@@ -3271,9 +3271,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/273.png",
     "shopeeLink": "https://vn.shp.ee/Ad3YCjY9",
-    "stock": 3,
+    "stock": 2,
     "totalInbound": 3,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 274,
@@ -3391,9 +3391,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/283.png",
     "shopeeLink": "https://vn.shp.ee/Ad3YCjY9",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 284,
@@ -3583,9 +3583,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/299.png",
     "shopeeLink": "https://vn.shp.ee/iBaP5Ewk",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 300,
@@ -3715,9 +3715,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/310.png",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 3,
+    "stock": 2,
     "totalInbound": 3,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 311,
@@ -3799,9 +3799,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/317.png",
     "shopeeLink": "https://vn.shp.ee/iNUf5n5t",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 318,
@@ -3859,9 +3859,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/00322.jpg",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 323,
@@ -3895,9 +3895,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/325.png",
     "shopeeLink": "https://vn.shp.ee/iNUf5n5t",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 326,
@@ -3919,9 +3919,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/327.png",
     "shopeeLink": "https://vn.shp.ee/iNUf5n5t",
-    "stock": 3,
+    "stock": 2,
     "totalInbound": 3,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 328,
@@ -4099,9 +4099,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/342.png",
     "shopeeLink": "https://vn.shp.ee/iNUf5n5t",
-    "stock": 2,
+    "stock": 0,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 2
   },
   {
     "id": 343,
@@ -4171,9 +4171,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/348.png",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 349,
@@ -4195,9 +4195,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/00350.jpg",
     "shopeeLink": "https://vn.shp.ee/iNUf5n5t",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 351,
@@ -4219,9 +4219,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/352.png",
     "shopeeLink": "https://vn.shp.ee/iNUf5n5t",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 353,
@@ -4267,9 +4267,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/356.png",
     "shopeeLink": "https://vn.shp.ee/iNUf5n5t",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 357,
@@ -4279,9 +4279,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/357.png",
     "shopeeLink": "https://vn.shp.ee/iNUf5n5t",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 358,
@@ -4471,9 +4471,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/373.png",
     "shopeeLink": "https://vn.shp.ee/iNUf5n5t",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 374,
@@ -4495,9 +4495,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/375.png",
     "shopeeLink": "https://vn.shp.ee/iNUf5n5t",
-    "stock": 3,
+    "stock": 1,
     "totalInbound": 3,
-    "totalOutbound": 0
+    "totalOutbound": 2
   },
   {
     "id": 376,
@@ -4891,9 +4891,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/408.png",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 409,
@@ -5023,9 +5023,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/419.png",
     "shopeeLink": "https://vn.shp.ee/iBaP5Ewk",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 420,
@@ -5035,9 +5035,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/00420.jpg",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 421,
@@ -5107,9 +5107,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/426.png",
     "shopeeLink": "https://vn.shp.ee/JmbSZLuC",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 427,
@@ -5143,9 +5143,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/429.png",
     "shopeeLink": "https://vn.shp.ee/JmbSZLuC",
-    "stock": 3,
+    "stock": 2,
     "totalInbound": 3,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 430,
@@ -5215,9 +5215,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/435.png",
     "shopeeLink": "https://vn.shp.ee/JmbSZLuC",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 436,
@@ -5371,9 +5371,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/448.png",
     "shopeeLink": "https://vn.shp.ee/JmbSZLuC",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 449,
@@ -5491,9 +5491,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/458.png",
     "shopeeLink": "https://vn.shp.ee/JmbSZLuC",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 459,
@@ -5587,9 +5587,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/466.png",
     "shopeeLink": "https://vn.shp.ee/U1gRSmhi",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 467,
@@ -5719,9 +5719,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/477.png",
     "shopeeLink": "https://vn.shp.ee/JmbSZLuC",
-    "stock": 3,
+    "stock": 2,
     "totalInbound": 3,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 478,
@@ -5887,9 +5887,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/491.png",
     "shopeeLink": "https://vn.shp.ee/iBaP5Ewk",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 492,
@@ -5971,9 +5971,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/498.png",
     "shopeeLink": "https://vn.shp.ee/JmbSZLuC",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 499,
@@ -6007,9 +6007,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/501.png",
     "shopeeLink": "https://vn.shp.ee/XNFPePc6",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 502,
@@ -6391,9 +6391,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/533.png",
     "shopeeLink": "https://vn.shp.ee/XNFPePc6",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 534,
@@ -6475,9 +6475,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/540.png",
     "shopeeLink": "https://vn.shp.ee/XNFPePc6",
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 541,
@@ -6559,9 +6559,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/547.png",
     "shopeeLink": "https://vn.shp.ee/XNFPePc6",
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 548,
@@ -6571,9 +6571,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/548.png",
     "shopeeLink": "https://vn.shp.ee/XNFPePc6",
-    "stock": 3,
+    "stock": 2,
     "totalInbound": 3,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 549,
@@ -6895,9 +6895,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/575.png",
     "shopeeLink": null,
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 576,
@@ -6955,9 +6955,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/580.png",
     "shopeeLink": null,
-    "stock": 2,
+    "stock": 1,
     "totalInbound": 2,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 581,
@@ -7039,9 +7039,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/587.png",
     "shopeeLink": null,
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 588,
@@ -7255,9 +7255,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/605.png",
     "shopeeLink": null,
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 606,
@@ -7471,9 +7471,9 @@
     "hasCard": true,
     "imageUrl": "/assets/cards/623.png",
     "shopeeLink": null,
-    "stock": 1,
+    "stock": 0,
     "totalInbound": 1,
-    "totalOutbound": 0
+    "totalOutbound": 1
   },
   {
     "id": 624,
