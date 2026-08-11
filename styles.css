@@ -290,8 +290,17 @@ h3 {
   margin-bottom: 10px;
 }
 
+.lookup-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
 .active-season {
   width: fit-content;
+  min-width: 0;
   max-width: 100%;
   margin: 0;
   overflow: hidden;
@@ -303,6 +312,55 @@ h3 {
   padding: 7px 9px;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.filter-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--ink);
+  color: #ffffff;
+  font-size: 0.74rem;
+  font-weight: 900;
+  padding: 0 10px;
+  white-space: nowrap;
+}
+
+.filter-toggle-icon {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+}
+
+.filter-toggle-icon::before,
+.filter-toggle-icon::after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 12px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+  content: "";
+  transform: translateY(-50%);
+}
+
+.filter-toggle-icon::after {
+  transform: translateY(-50%) rotate(90deg);
+  transition: transform 0.16s ease;
+}
+
+.filter-toggle[aria-expanded="true"] .filter-toggle-icon::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+.filter-body {
+  display: block;
 }
 
 .controls {
@@ -417,31 +475,101 @@ input[type="search"]:focus {
 }
 
 .card-item {
+  --rarity: #64748b;
+  --rarity-soft: #f1f5f9;
+  --rarity-border: #cbd5e1;
+  --rarity-strong: #334155;
   display: grid;
   grid-template-columns: 68px minmax(0, 1fr);
   min-height: 116px;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid var(--rarity-border);
+  border-left: 5px solid var(--rarity);
   border-radius: 8px;
-  background: var(--surface);
+  background: linear-gradient(90deg, var(--rarity-soft), var(--surface) 42%);
   box-shadow: 0 5px 14px rgba(19, 34, 56, 0.06);
 }
 
 .card-item.is-numbered {
-  border-color: rgba(183, 121, 31, 0.36);
+  border-color: var(--rarity-border);
+  border-left-color: var(--rarity);
 }
 
 .card-item.is-autograph {
-  border-color: rgba(8, 127, 91, 0.36);
+  border-color: var(--rarity-border);
+  border-left-color: var(--rarity);
+}
+
+.card-item.rarity-base {
+  --rarity: #64748b;
+  --rarity-soft: #f8fafc;
+  --rarity-border: #d5dde8;
+  --rarity-strong: #334155;
+}
+
+.card-item.rarity-parallel {
+  --rarity: #0d5abf;
+  --rarity-soft: #eaf2ff;
+  --rarity-border: #b8d1f5;
+  --rarity-strong: #083878;
+}
+
+.card-item.rarity-rookie {
+  --rarity: #0f766e;
+  --rarity-soft: #e7f7f4;
+  --rarity-border: #a7dcd3;
+  --rarity-strong: #115e59;
+}
+
+.card-item.rarity-insert {
+  --rarity: #6d28d9;
+  --rarity-soft: #f2edff;
+  --rarity-border: #cdbdf6;
+  --rarity-strong: #4c1d95;
+}
+
+.card-item.rarity-numbered {
+  --rarity: #b7791f;
+  --rarity-soft: #fff5dc;
+  --rarity-border: #efd392;
+  --rarity-strong: #8a5a10;
+}
+
+.card-item.rarity-limited {
+  --rarity: #c2410c;
+  --rarity-soft: #fff0e7;
+  --rarity-border: #f4b08f;
+  --rarity-strong: #9a3412;
+}
+
+.card-item.rarity-ultra {
+  --rarity: #be123c;
+  --rarity-soft: #fff1f2;
+  --rarity-border: #f2a6b8;
+  --rarity-strong: #9f1239;
+}
+
+.card-item.rarity-autograph {
+  --rarity: #087f5b;
+  --rarity-soft: #e7f6ef;
+  --rarity-border: #9bd9c1;
+  --rarity-strong: #066447;
+}
+
+.card-item.rarity-relic {
+  --rarity: #4754c7;
+  --rarity-soft: #eef1ff;
+  --rarity-border: #bac3f3;
+  --rarity-strong: #303a99;
 }
 
 .card-number {
   display: grid;
   place-items: center;
   min-width: 0;
-  border-right: 1px solid var(--line);
-  background: var(--surface-soft);
-  color: var(--accent-strong);
+  border-right: 1px solid var(--rarity-border);
+  background: var(--rarity-soft);
+  color: var(--rarity-strong);
   font-size: 0.9rem;
   font-weight: 900;
   padding: 8px;
@@ -477,16 +605,18 @@ input[type="search"]:focus {
 }
 
 .card-type {
-  background: #edf2f8;
-  color: var(--accent-strong);
+  border: 1px solid var(--rarity-border);
+  background: var(--rarity-soft);
+  color: var(--rarity-strong);
 }
 
 .parallel-pill {
   justify-self: end;
   min-width: 0;
   max-width: 100%;
-  background: var(--warning-soft);
-  color: var(--warning);
+  border: 1px solid var(--rarity-border);
+  background: #ffffff;
+  color: var(--rarity-strong);
   overflow-wrap: anywhere;
   text-align: right;
 }
@@ -594,6 +724,35 @@ noscript {
   font-weight: 800;
 }
 
+@media (max-width: 759px) {
+  .lookup-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .active-season {
+    width: auto;
+  }
+
+  .filter-toggle {
+    display: inline-flex;
+    justify-self: start;
+  }
+
+  .lookup-panel.is-filter-collapsed {
+    padding-bottom: 8px;
+  }
+
+  .lookup-panel.is-filter-collapsed .lookup-heading {
+    margin-bottom: 0;
+  }
+
+  .lookup-panel.is-filter-collapsed .filter-body {
+    display: none;
+  }
+}
+
 @media (min-width: 560px) {
   .app-shell {
     width: calc(100% - 28px);
@@ -607,6 +766,10 @@ noscript {
   .lookup-heading {
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: start;
+  }
+
+  .lookup-actions {
+    justify-content: end;
   }
 
   .controls {

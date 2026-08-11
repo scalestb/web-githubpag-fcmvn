@@ -9,6 +9,10 @@ const cardTypeFilter = document.querySelector("#cardTypeFilter");
 const parallelFilter = document.querySelector("#parallelFilter");
 const featureFilter = document.querySelector("#featureFilter");
 const clearFilters = document.querySelector("#clearFilters");
+const lookupPanel = document.querySelector("#checklistApp");
+const filterToggle = document.querySelector("#filterToggle");
+const filterToggleText = document.querySelector("#filterToggleText");
+const filterBody = document.querySelector("#filterBody");
 const cardList = document.querySelector("#cardList");
 const cardTemplate = document.querySelector("#cardTemplate");
 const resultSummary = document.querySelector("#resultSummary");
@@ -26,6 +30,7 @@ const clubsCount = document.querySelector("#clubsCount");
 
 const SHOPEE_URL = "https://shopee.vn/fcmvn_com";
 const numberFormatter = new Intl.NumberFormat("vi-VN");
+const mobileFiltersQuery = window.matchMedia("(max-width: 759px)");
 
 const channels = [
   {
@@ -61,7 +66,12 @@ const state = {
   parallel: "all",
   feature: "all",
   currentPage: 1,
-  pageSize: 24
+  pageSize: 24,
+  filtersCollapsed: false,
+  filterScrollTicking: false,
+  filterManualOpenScrollY: null,
+  filterAutoCollapsePausedUntil: 0,
+  lastScrollY: window.scrollY || 0
 };
 
 function normalizeText(value) {
@@ -130,6 +140,118 @@ function isNumbered(card) {
 
 function isAutograph(card) {
   return card.is_autograph === true;
+}
+
+function getRarityTone(card) {
+  const cardType = normalizeText(getCardType(card));
+  const parallelType = normalizeText(getParallelType(card));
+  const serialLimit = Number(card.serial_limit) || 0;
+  const hasParallel = parallelType && parallelType !== "base";
+
+  if (isAutograph(card) || cardType.includes("autograph") || cardType.includes("auto")) {
+    return "autograph";
+  }
+
+  if (cardType.includes("ssp") || cardType.includes("ultra") || (serialLimit > 0 && serialLimit <= 10)) {
+    return "ultra";
+  }
+
+  if (cardType.includes("sp") || cardType.includes("limited") || (serialLimit > 0 && serialLimit <= 50)) {
+    return "limited";
+  }
+
+  if (cardType.includes("relic")) {
+    return "relic";
+  }
+
+  if (isNumbered(card)) {
+    return "numbered";
+  }
+
+  if (cardType.includes("insert")) {
+    return "insert";
+  }
+
+  if (cardType === "rc" || cardType.includes("rookie")) {
+    return "rookie";
+  }
+
+  if (hasParallel) {
+    return "parallel";
+  }
+
+  return "base";
+}
+
+function isMobileFilterView() {
+  return mobileFiltersQuery.matches;
+}
+
+function setFilterPanelCollapsed(collapsed) {
+  if (!lookupPanel || !filterToggle || !filterToggleText || !filterBody) {
+    return;
+  }
+
+  const nextCollapsed = Boolean(collapsed && isMobileFilterView());
+
+  state.filtersCollapsed = nextCollapsed;
+
+  if (nextCollapsed) {
+    state.filterManualOpenScrollY = null;
+  }
+
+  lookupPanel.classList.toggle("is-filter-collapsed", nextCollapsed);
+  filterBody.setAttribute("aria-hidden", String(nextCollapsed));
+  filterToggle.setAttribute("aria-expanded", String(!nextCollapsed));
+  filterToggle.setAttribute("aria-label", nextCollapsed ? "Mở bộ lọc" : "Thu gọn bộ lọc");
+  filterToggleText.textContent = nextCollapsed ? "Mở lọc" : "Thu gọn";
+
+  if (nextCollapsed && filterBody.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
+}
+
+function syncFilterPanelForViewport() {
+  setFilterPanelCollapsed(state.filtersCollapsed);
+}
+
+function handleFilterAutoCollapse() {
+  if (state.filterScrollTicking) {
+    return;
+  }
+
+  state.filterScrollTicking = true;
+
+  window.requestAnimationFrame(() => {
+    const scrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    const scrollingDown = scrollY > state.lastScrollY + 8;
+    const hasSearchResults = cardList.children.length > 0 || !emptyState.hidden;
+    const resultsAnchor = cardList.children.length > 0 ? cardList : emptyState;
+    const resultsTop = hasSearchResults ? resultsAnchor.getBoundingClientRect().top : Number.POSITIVE_INFINITY;
+
+    state.lastScrollY = scrollY;
+    state.filterScrollTicking = false;
+
+    if (!scrollingDown || !isMobileFilterView() || state.filtersCollapsed) {
+      return;
+    }
+
+    if (Date.now() < state.filterAutoCollapsePausedUntil) {
+      return;
+    }
+
+    if (state.filterManualOpenScrollY !== null) {
+      if (scrollY <= state.filterManualOpenScrollY + 16) {
+        return;
+      }
+
+      state.filterManualOpenScrollY = null;
+    }
+
+    if (resultsTop < window.innerHeight * 0.82) {
+      setFilterPanelCollapsed(true);
+    }
+  });
 }
 
 async function fetchJson(url) {
@@ -322,7 +444,10 @@ function renderCards() {
     const serialLimit = card.serial_limit ? `/${card.serial_limit}` : "";
     const numbered = isNumbered(card);
     const autograph = isAutograph(card);
+    const rarityTone = getRarityTone(card);
 
+    item.classList.add(`rarity-${rarityTone}`);
+    item.dataset.rarity = rarityTone;
     item.classList.toggle("is-numbered", numbered);
     item.classList.toggle("is-autograph", autograph);
     node.querySelector(".card-number").textContent = `#${getCardNumber(card)}`;
@@ -394,7 +519,7 @@ async function changeSeason(seasonId, shouldScroll = false) {
     renderCards();
 
     if (shouldScroll) {
-      document.querySelector("#checklistApp").scrollIntoView({ behavior: "smooth", block: "start" });
+      lookupPanel.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   } catch (error) {
     state.cards = [];
@@ -410,6 +535,26 @@ async function changeSeason(seasonId, shouldScroll = false) {
 }
 
 function bindEvents() {
+  filterToggle.addEventListener("click", () => {
+    state.lastScrollY = window.scrollY || document.documentElement.scrollTop || 0;
+    const nextCollapsed = !state.filtersCollapsed;
+
+    if (!nextCollapsed) {
+      state.filterManualOpenScrollY = state.lastScrollY;
+      state.filterAutoCollapsePausedUntil = Date.now() + 1200;
+    }
+
+    setFilterPanelCollapsed(nextCollapsed);
+  });
+
+  window.addEventListener("scroll", handleFilterAutoCollapse, { passive: true });
+
+  if (mobileFiltersQuery.addEventListener) {
+    mobileFiltersQuery.addEventListener("change", syncFilterPanelForViewport);
+  } else {
+    mobileFiltersQuery.addListener(syncFilterPanelForViewport);
+  }
+
   seasonSelect.addEventListener("change", (event) => {
     changeSeason(event.target.value);
   });
@@ -459,13 +604,13 @@ function bindEvents() {
   prevPage.addEventListener("click", () => {
     state.currentPage -= 1;
     renderCards();
-    document.querySelector("#checklistApp").scrollIntoView({ behavior: "smooth", block: "start" });
+    lookupPanel.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
   nextPage.addEventListener("click", () => {
     state.currentPage += 1;
     renderCards();
-    document.querySelector("#checklistApp").scrollIntoView({ behavior: "smooth", block: "start" });
+    lookupPanel.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 
   pageSizeSelect.addEventListener("change", (event) => {
@@ -477,6 +622,7 @@ function bindEvents() {
 
 async function init() {
   renderChannels();
+  syncFilterPanelForViewport();
   bindEvents();
   setLoading("Đang tải danh sách checklist");
 

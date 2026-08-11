@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260811">
+    <link rel="stylesheet" href="styles.css?v=20260811-mobile-filter3">
   </head>
   <body>
     <main class="app-shell">
@@ -52,55 +52,69 @@
             <p class="eyebrow">Checklist</p>
             <h2 id="lookupTitle">Tra cứu checklist</h2>
           </div>
-          <p class="active-season" id="activeSeasonName">Đang tải dữ liệu</p>
+          <div class="lookup-actions">
+            <p class="active-season" id="activeSeasonName">Đang tải dữ liệu</p>
+            <button
+              class="filter-toggle"
+              id="filterToggle"
+              type="button"
+              aria-expanded="true"
+              aria-controls="filterBody"
+            >
+              <span id="filterToggleText">Thu gọn</span>
+              <span class="filter-toggle-icon" aria-hidden="true"></span>
+            </button>
+          </div>
         </div>
 
-        <div class="controls" aria-label="Bộ lọc checklist">
-          <label class="field season-field">
-            <span>Dòng sản phẩm</span>
-            <select id="seasonSelect"></select>
-          </label>
+        <div class="filter-body" id="filterBody">
+          <div class="controls" aria-label="Bộ lọc checklist">
+            <label class="field season-field">
+              <span>Dòng sản phẩm</span>
+              <select id="seasonSelect"></select>
+            </label>
 
-          <label class="field search-field">
-            <span>Tìm kiếm</span>
-            <input id="searchInput" type="search" placeholder="Số thẻ, cầu thủ, CLB, parallel...">
-          </label>
+            <label class="field search-field">
+              <span>Tìm kiếm</span>
+              <input id="searchInput" type="search" placeholder="Số thẻ, cầu thủ, CLB, parallel...">
+            </label>
 
-          <label class="field club-field">
-            <span>CLB</span>
-            <select id="clubFilter">
-              <option value="all">Tất cả CLB</option>
-            </select>
-          </label>
+            <label class="field club-field">
+              <span>CLB</span>
+              <select id="clubFilter">
+                <option value="all">Tất cả CLB</option>
+              </select>
+            </label>
 
-          <label class="field type-field">
-            <span>Card type</span>
-            <select id="cardTypeFilter">
-              <option value="all">Tất cả type</option>
-            </select>
-          </label>
+            <label class="field type-field">
+              <span>Card type</span>
+              <select id="cardTypeFilter">
+                <option value="all">Tất cả type</option>
+              </select>
+            </label>
 
-          <label class="field parallel-field">
-            <span>Parallel</span>
-            <select id="parallelFilter">
-              <option value="all">Tất cả parallel</option>
-            </select>
-          </label>
+            <label class="field parallel-field">
+              <span>Parallel</span>
+              <select id="parallelFilter">
+                <option value="all">Tất cả parallel</option>
+              </select>
+            </label>
 
-          <label class="field feature-field">
-            <span>Serial/Auto</span>
-            <select id="featureFilter">
-              <option value="all">Tất cả</option>
-              <option value="numbered">Serial numbered</option>
-              <option value="autograph">Autograph</option>
-              <option value="standard">Không serial/auto</option>
-            </select>
-          </label>
-        </div>
+            <label class="field feature-field">
+              <span>Serial/Auto</span>
+              <select id="featureFilter">
+                <option value="all">Tất cả</option>
+                <option value="numbered">Serial numbered</option>
+                <option value="autograph">Autograph</option>
+                <option value="standard">Không serial/auto</option>
+              </select>
+            </label>
+          </div>
 
-        <div class="summary-row">
-          <p id="resultSummary">Đang tải checklist</p>
-          <button class="ghost-button" id="clearFilters" type="button">Xóa lọc</button>
+          <div class="summary-row">
+            <p id="resultSummary">Đang tải checklist</p>
+            <button class="ghost-button" id="clearFilters" type="button">Xóa lọc</button>
+          </div>
         </div>
       </section>
 
@@ -182,6 +196,6 @@
     </template>
 
     <noscript>Trang cần JavaScript để đọc checklist từ các file JSON.</noscript>
-    <script src="app.js?v=20260811"></script>
+    <script src="app.js?v=20260811-mobile-filter3"></script>
   </body>
 </html>
