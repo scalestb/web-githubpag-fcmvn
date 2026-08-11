@@ -1,0 +1,58 @@
+[
+  {
+    "id": "topps_premier_league_2025_26",
+    "name": "Topps Premier League 2025/26",
+    "brand": "Topps",
+    "collection": "Premier League",
+    "season": "2025/26",
+    "checklist_file": "data/seasons/topps_premier_league_2025_26.json",
+    "total_items": 19656,
+    "clubs_count": 20,
+    "card_types_count": 27,
+    "parallel_types_count": 50,
+    "numbered_count": 17592,
+    "autograph_count": 3762
+  },
+  {
+    "id": "topps_chrome_premier_league_2025_26",
+    "name": "Topps Chrome Premier League 2025/26",
+    "brand": "Topps Chrome",
+    "collection": "Premier League",
+    "season": "2025/26",
+    "checklist_file": "data/seasons/topps_chrome_premier_league_2025_26.json",
+    "total_items": 14130,
+    "clubs_count": 44,
+    "card_types_count": 5,
+    "parallel_types_count": 53,
+    "numbered_count": 12097,
+    "autograph_count": 2972
+  },
+  {
+    "id": "panini_prizm_fifa_2025_26",
+    "name": "Panini Prizm FIFA 2025/26",
+    "brand": "Panini Prizm",
+    "collection": "FIFA",
+    "season": "2025/26",
+    "checklist_file": "data/seasons/panini_prizm_fifa_2025_26.json",
+    "total_items": 19975,
+    "clubs_count": 35,
+    "card_types_count": 3,
+    "parallel_types_count": 54,
+    "numbered_count": 12627,
+    "autograph_count": 2275
+  },
+  {
+    "id": "topps_uefa_club_competitions_2025_26",
+    "name": "Topps UEFA Club Competitions 2025/26",
+    "brand": "Topps",
+    "collection": "UEFA Club Competitions",
+    "season": "2025/26",
+    "checklist_file": "data/seasons/topps_uefa_club_competitions_2025_26.json",
+    "total_items": 11842,
+    "clubs_count": 33,
+    "card_types_count": 7,
+    "parallel_types_count": 58,
+    "numbered_count": 9148,
+    "autograph_count": 1876
+  }
+]

@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tra cứu thẻ Panini</title>
+    <meta
+      name="description"
+      content="Tra cứu checklist các dòng sản phẩm thẻ của FCMVN theo số thẻ, cầu thủ, CLB, card type, parallel, serial và autograph."
+    >
+    <title>FCMVN Card Checklist</title>
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,39 +16,115 @@
   </head>
   <body>
     <main class="app-shell">
-      <section class="lookup-panel" aria-labelledby="pageTitle">
-        <div class="brand-bar">
-          <div>
-            <p class="eyebrow">Card checklist</p>
-            <h1 id="pageTitle">Tra cứu thẻ Panini</h1>
-          </div>
-          <a class="shop-link" href="https://shopee.vn/fcmvn_com" target="_blank" rel="noopener">Shopee</a>
+      <header class="site-header" aria-labelledby="pageTitle">
+        <div class="brand-copy">
+          <p class="eyebrow">FCMVN Card Checklist</p>
+          <h1 id="pageTitle">
+            <span>Tra cứu checklist</span>
+            <span>dòng sản phẩm thẻ</span>
+          </h1>
+          <p class="intro">
+            Chọn dòng sản phẩm để xem checklist và lọc nhanh theo số thẻ, cầu thủ, CLB, parallel, serial hoặc autograph.
+          </p>
         </div>
 
-        <div class="controls" aria-label="Bộ lọc tra cứu">
+        <section class="channel-panel" aria-labelledby="channelTitle">
+          <div class="section-heading">
+            <p class="eyebrow">Channel</p>
+            <h2 id="channelTitle">Theo dõi FCMVN</h2>
+          </div>
+          <div class="channel-list" id="channelList"></div>
+        </section>
+      </header>
+
+      <section class="season-panel" aria-labelledby="seasonTitle">
+        <div class="section-heading">
+          <p class="eyebrow">Dòng sản phẩm</p>
+          <h2 id="seasonTitle">Danh sách checklist</h2>
+        </div>
+        <p class="section-note">Bấm vào một dòng sản phẩm để mở checklist tương ứng.</p>
+        <div class="season-list" id="seasonList" aria-live="polite"></div>
+      </section>
+
+      <section class="lookup-panel" id="checklistApp" aria-labelledby="lookupTitle">
+        <div class="lookup-heading">
+          <div>
+            <p class="eyebrow">Checklist</p>
+            <h2 id="lookupTitle">Tra cứu checklist</h2>
+          </div>
+          <p class="active-season" id="activeSeasonName">Đang tải dữ liệu</p>
+        </div>
+
+        <div class="controls" aria-label="Bộ lọc checklist">
           <label class="field season-field">
-            <span>Mùa thẻ</span>
+            <span>Dòng sản phẩm</span>
             <select id="seasonSelect"></select>
           </label>
 
           <label class="field search-field">
             <span>Tìm kiếm</span>
-            <input id="searchInput" type="search" placeholder="Số thẻ hoặc tên">
+            <input id="searchInput" type="search" placeholder="Số thẻ, cầu thủ, CLB, parallel...">
           </label>
 
-          <label class="toggle-field">
-            <input id="stockOnly" type="checkbox">
-            <span id="ownedOnlyLabel">Có hàng</span>
+          <label class="field club-field">
+            <span>CLB</span>
+            <select id="clubFilter">
+              <option value="all">Tất cả CLB</option>
+            </select>
+          </label>
+
+          <label class="field type-field">
+            <span>Card type</span>
+            <select id="cardTypeFilter">
+              <option value="all">Tất cả type</option>
+            </select>
+          </label>
+
+          <label class="field parallel-field">
+            <span>Parallel</span>
+            <select id="parallelFilter">
+              <option value="all">Tất cả parallel</option>
+            </select>
+          </label>
+
+          <label class="field feature-field">
+            <span>Serial/Auto</span>
+            <select id="featureFilter">
+              <option value="all">Tất cả</option>
+              <option value="numbered">Serial numbered</option>
+              <option value="autograph">Autograph</option>
+              <option value="standard">Không serial/auto</option>
+            </select>
           </label>
         </div>
 
         <div class="summary-row">
-          <p id="resultSummary">Đang tải dữ liệu</p>
+          <p id="resultSummary">Đang tải checklist</p>
           <button class="ghost-button" id="clearFilters" type="button">Xóa lọc</button>
         </div>
       </section>
 
+      <section class="stats-grid" id="statsGrid" aria-label="Tổng quan checklist">
+        <article class="stat-item">
+          <span id="totalItems">0</span>
+          <p>Tổng item</p>
+        </article>
+        <article class="stat-item">
+          <span id="numberedItems">0</span>
+          <p>Serial</p>
+        </article>
+        <article class="stat-item">
+          <span id="autographItems">0</span>
+          <p>Auto</p>
+        </article>
+        <article class="stat-item">
+          <span id="clubsCount">0</span>
+          <p>CLB</p>
+        </article>
+      </section>
+
       <section class="card-list" id="cardList" aria-live="polite"></section>
+
       <nav class="pagination" id="pagination" aria-label="Phân trang danh sách thẻ" hidden>
         <button class="page-button" id="prevPage" type="button">Trước</button>
         <span class="page-info" id="pageInfo">Trang 1/1</span>
@@ -52,45 +132,56 @@
         <label class="page-size">
           <span>Hiển thị</span>
           <select id="pageSizeSelect">
-            <option value="30">30</option>
-            <option value="60">60</option>
-            <option value="100">100</option>
+            <option value="24">24</option>
+            <option value="48">48</option>
+            <option value="96">96</option>
           </select>
         </label>
       </nav>
+
       <section class="empty-state" id="emptyState" hidden>
-        <h2>Không tìm thấy thẻ phù hợp</h2>
-        <p>Thử đổi mùa thẻ hoặc từ khóa tìm kiếm.</p>
+        <h2>Không tìm thấy item phù hợp</h2>
+        <p>Thử đổi dòng sản phẩm, bộ lọc hoặc từ khóa tìm kiếm.</p>
       </section>
     </main>
 
+    <template id="channelTemplate">
+      <a class="channel-card" href="#" target="_blank" rel="noopener">
+        <span class="channel-icon"></span>
+        <span class="channel-copy">
+          <strong class="channel-name"></strong>
+          <small class="channel-desc"></small>
+        </span>
+      </a>
+    </template>
+
+    <template id="seasonTemplate">
+      <button class="season-button" type="button">
+        <span class="season-name"></span>
+        <small class="season-brand"></small>
+        <small class="season-count"></small>
+      </button>
+    </template>
+
     <template id="cardTemplate">
       <article class="card-item">
-        <div class="card-image-wrap">
-          <img class="card-image" alt="" loading="lazy">
-        </div>
+        <div class="card-number"></div>
         <div class="card-content">
           <div class="card-topline">
-            <span class="card-code"></span>
-            <span class="rarity-pill"></span>
+            <span class="card-type"></span>
+            <span class="parallel-pill"></span>
           </div>
-          <h2 class="card-name"></h2>
-          <div class="rarity-line">
-            <span class="rarity-label">Rarity</span>
-            <span class="rarity-text"></span>
+          <h3 class="player-name"></h3>
+          <p class="club-name"></p>
+          <div class="badge-row">
+            <span class="serial-badge"></span>
+            <span class="auto-badge"></span>
           </div>
-          <div class="card-meta">
-            <span class="card-status"></span>
-            <span class="stock-value"></span>
-          </div>
-          <div class="movement-row">
-            <span class="movement-value"></span>
-          </div>
-          <a class="buy-link" href="#" target="_blank" rel="noopener">Mua trên Shopee</a>
         </div>
       </article>
     </template>
 
+    <noscript>Trang cần JavaScript để đọc checklist từ các file JSON.</noscript>
     <script src="app.js"></script>
   </body>
 </html>
