@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260811-mobile-filter3">
+    <link rel="stylesheet" href="styles.css?v=20260816-table-default">
   </head>
   <body>
     <main class="app-shell">
@@ -113,6 +113,10 @@
 
           <div class="summary-row">
             <p id="resultSummary">Đang tải checklist</p>
+            <div class="view-switch" role="group" aria-label="Kiểu hiển thị">
+              <button class="view-button is-active" type="button" data-view-mode="table" aria-pressed="true">Bảng</button>
+              <button class="view-button" type="button" data-view-mode="cards" aria-pressed="false">Thẻ</button>
+            </div>
             <button class="ghost-button" id="clearFilters" type="button">Xóa lọc</button>
           </div>
         </div>
@@ -149,6 +153,7 @@
             <option value="24">24</option>
             <option value="48">48</option>
             <option value="96">96</option>
+            <option value="200" selected>200</option>
           </select>
         </label>
       </nav>
@@ -196,6 +201,6 @@
     </template>
 
     <noscript>Trang cần JavaScript để đọc checklist từ các file JSON.</noscript>
-    <script src="app.js?v=20260811-mobile-filter3"></script>
+    <script src="app.js?v=20260816-table-default"></script>
   </body>
 </html>

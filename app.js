@@ -9,6 +9,7 @@ const cardTypeFilter = document.querySelector("#cardTypeFilter");
 const parallelFilter = document.querySelector("#parallelFilter");
 const featureFilter = document.querySelector("#featureFilter");
 const clearFilters = document.querySelector("#clearFilters");
+const viewModeButtons = Array.from(document.querySelectorAll("[data-view-mode]"));
 const lookupPanel = document.querySelector("#checklistApp");
 const filterToggle = document.querySelector("#filterToggle");
 const filterToggleText = document.querySelector("#filterToggleText");
@@ -65,8 +66,9 @@ const state = {
   cardType: "all",
   parallel: "all",
   feature: "all",
+  viewMode: "table",
   currentPage: 1,
-  pageSize: 24,
+  pageSize: 200,
   filtersCollapsed: false,
   filterScrollTicking: false,
   filterManualOpenScrollY: null,
@@ -416,32 +418,29 @@ function updatePagination(total) {
   pageSizeSelect.value = String(state.pageSize);
 }
 
-function renderCards() {
-  const cards = getFilteredCards();
-  const stats = getChecklistStats();
-  const pageCount = getPageCount(cards.length);
+function getSerialLabel(card) {
+  if (!isNumbered(card)) {
+    return "Không serial";
+  }
 
-  state.currentPage = Math.min(Math.max(1, state.currentPage), pageCount);
+  return card.serial_limit ? `Serial /${card.serial_limit}` : "Serial";
+}
 
-  const startIndex = (state.currentPage - 1) * state.pageSize;
-  const pageCards = cards.slice(startIndex, startIndex + state.pageSize);
-  const rangeStart = cards.length === 0 ? 0 : startIndex + 1;
-  const rangeEnd = Math.min(startIndex + state.pageSize, cards.length);
+function updateViewModeButtons() {
+  viewModeButtons.forEach((button) => {
+    const isActive = button.dataset.viewMode === state.viewMode;
 
-  cardList.innerHTML = "";
-  emptyState.hidden = cards.length > 0;
-  resultSummary.textContent = `${formatCount(rangeStart)}-${formatCount(rangeEnd)}/${formatCount(cards.length)} item phù hợp trong ${formatCount(stats.total)} item`;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
+}
 
-  updateStats();
-  updatePagination(cards.length);
-  renderSeasonButtons();
-
+function renderCardItems(pageCards) {
   pageCards.forEach((card) => {
     const node = cardTemplate.content.cloneNode(true);
     const item = node.querySelector(".card-item");
     const cardType = getCardType(card);
     const parallelType = getParallelType(card);
-    const serialLimit = card.serial_limit ? `/${card.serial_limit}` : "";
     const numbered = isNumbered(card);
     const autograph = isAutograph(card);
     const rarityTone = getRarityTone(card);
@@ -455,13 +454,113 @@ function renderCards() {
     node.querySelector(".club-name").textContent = getClub(card);
     node.querySelector(".card-type").textContent = cardType;
     node.querySelector(".parallel-pill").textContent = parallelType;
-    node.querySelector(".serial-badge").textContent = numbered ? `Serial ${serialLimit}` : "Không serial";
+    node.querySelector(".serial-badge").textContent = getSerialLabel(card);
     node.querySelector(".serial-badge").classList.toggle("is-active", numbered);
     node.querySelector(".auto-badge").textContent = autograph ? "Autograph" : "Không auto";
     node.querySelector(".auto-badge").classList.toggle("is-active", autograph);
 
     cardList.appendChild(node);
   });
+}
+
+function renderTableItems(pageCards) {
+  const wrapper = document.createElement("div");
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
+  const tbody = document.createElement("tbody");
+  const headerRow = document.createElement("tr");
+  const columns = ["Số thẻ", "Cầu thủ", "CLB", "Card type", "Parallel", "Serial", "Auto"];
+
+  wrapper.className = "table-scroll";
+  table.className = "checklist-table";
+
+  columns.forEach((label) => {
+    const th = document.createElement("th");
+
+    th.scope = "col";
+    th.textContent = label;
+    headerRow.appendChild(th);
+  });
+
+  thead.appendChild(headerRow);
+
+  pageCards.forEach((card) => {
+    const numbered = isNumbered(card);
+    const autograph = isAutograph(card);
+    const row = document.createElement("tr");
+    const serialValue = numbered ? (card.serial_limit ? `/${card.serial_limit}` : "Serial") : "";
+    const values = [
+      `#${getCardNumber(card)}`,
+      getPlayerName(card),
+      getClub(card),
+      getCardType(card),
+      getParallelType(card),
+      serialValue,
+      autograph ? "Auto" : ""
+    ];
+    const cellClasses = [
+      "table-number",
+      "table-player",
+      "table-club",
+      "table-type",
+      "table-parallel",
+      "table-serial",
+      "table-auto"
+    ];
+
+    row.className = `checklist-row rarity-${getRarityTone(card)}`;
+    row.classList.toggle("is-numbered", numbered);
+    row.classList.toggle("is-autograph", autograph);
+
+    values.forEach((value, index) => {
+      const td = document.createElement("td");
+
+      td.className = cellClasses[index];
+      td.textContent = value;
+      row.appendChild(td);
+    });
+
+    tbody.appendChild(row);
+  });
+
+  table.appendChild(thead);
+  table.appendChild(tbody);
+  wrapper.appendChild(table);
+  cardList.appendChild(wrapper);
+}
+
+function renderCards() {
+  const cards = getFilteredCards();
+  const stats = getChecklistStats();
+  const pageCount = getPageCount(cards.length);
+
+  state.currentPage = Math.min(Math.max(1, state.currentPage), pageCount);
+
+  const startIndex = (state.currentPage - 1) * state.pageSize;
+  const pageCards = cards.slice(startIndex, startIndex + state.pageSize);
+  const rangeStart = cards.length === 0 ? 0 : startIndex + 1;
+  const rangeEnd = Math.min(startIndex + state.pageSize, cards.length);
+
+  cardList.innerHTML = "";
+  cardList.classList.toggle("is-table-view", state.viewMode === "table");
+  emptyState.hidden = cards.length > 0;
+  resultSummary.textContent = `${formatCount(rangeStart)}-${formatCount(rangeEnd)}/${formatCount(cards.length)} item phù hợp trong ${formatCount(stats.total)} item`;
+
+  updateStats();
+  updatePagination(cards.length);
+  updateViewModeButtons();
+  renderSeasonButtons();
+
+  if (pageCards.length === 0) {
+    return;
+  }
+
+  if (state.viewMode === "table") {
+    renderTableItems(pageCards);
+    return;
+  }
+
+  renderCardItems(pageCards);
 }
 
 function resetFilters() {
@@ -600,6 +699,19 @@ function bindEvents() {
   });
 
   clearFilters.addEventListener("click", resetFilters);
+
+  viewModeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const nextMode = button.dataset.viewMode === "table" ? "table" : "cards";
+
+      if (state.viewMode === nextMode) {
+        return;
+      }
+
+      state.viewMode = nextMode;
+      renderCards();
+    });
+  });
 
   prevPage.addEventListener("click", () => {
     state.currentPage -= 1;

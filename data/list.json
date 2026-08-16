@@ -1,5 +1,19 @@
 [
   {
+    "id": "topps_flagship_premier_league_2026_27_checklist",
+    "name": "Topps Flagship Premier League 2026/27",
+    "brand": "Topps Flagship",
+    "collection": "Premier League",
+    "season": "2026/27",
+    "checklist_file": "data/seasons/topps_flagship_premier_league_2026_27_checklist.json",
+    "total_items": 1138,
+    "clubs_count": 20,
+    "card_types_count": 5,
+    "parallel_types_count": 41,
+    "numbered_count": 0,
+    "autograph_count": 334
+  },
+  {
     "id": "topps_premier_league_2025_26",
     "name": "Topps Premier League 2025/26",
     "brand": "Topps",

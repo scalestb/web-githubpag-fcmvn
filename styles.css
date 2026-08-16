@@ -403,7 +403,7 @@ input[type="search"]:focus {
 
 .summary-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr) auto auto;
   align-items: center;
   gap: 8px;
   margin-top: 9px;
@@ -427,10 +427,42 @@ input[type="search"]:focus {
   padding: 0 10px;
 }
 
+.view-switch {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(52px, auto));
+  gap: 2px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  padding: 2px;
+}
+
+.view-button {
+  min-height: 30px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 900;
+  padding: 0 9px;
+  white-space: nowrap;
+}
+
+.view-button.is-active {
+  background: var(--surface);
+  color: var(--accent-strong);
+  box-shadow: 0 2px 7px rgba(19, 34, 56, 0.1);
+}
+
 .ghost-button:hover,
 .page-button:hover:not(:disabled) {
   border-color: rgba(13, 90, 191, 0.44);
   background: #edf5ff;
+}
+
+.view-button:hover {
+  color: var(--accent-strong);
 }
 
 .stats-grid {
@@ -500,63 +532,72 @@ input[type="search"]:focus {
   border-left-color: var(--rarity);
 }
 
-.card-item.rarity-base {
+.card-item.rarity-base,
+.checklist-row.rarity-base {
   --rarity: #64748b;
   --rarity-soft: #f8fafc;
   --rarity-border: #d5dde8;
   --rarity-strong: #334155;
 }
 
-.card-item.rarity-parallel {
+.card-item.rarity-parallel,
+.checklist-row.rarity-parallel {
   --rarity: #0d5abf;
   --rarity-soft: #eaf2ff;
   --rarity-border: #b8d1f5;
   --rarity-strong: #083878;
 }
 
-.card-item.rarity-rookie {
+.card-item.rarity-rookie,
+.checklist-row.rarity-rookie {
   --rarity: #0f766e;
   --rarity-soft: #e7f7f4;
   --rarity-border: #a7dcd3;
   --rarity-strong: #115e59;
 }
 
-.card-item.rarity-insert {
+.card-item.rarity-insert,
+.checklist-row.rarity-insert {
   --rarity: #6d28d9;
   --rarity-soft: #f2edff;
   --rarity-border: #cdbdf6;
   --rarity-strong: #4c1d95;
 }
 
-.card-item.rarity-numbered {
+.card-item.rarity-numbered,
+.checklist-row.rarity-numbered {
   --rarity: #b7791f;
   --rarity-soft: #fff5dc;
   --rarity-border: #efd392;
   --rarity-strong: #8a5a10;
 }
 
-.card-item.rarity-limited {
+.card-item.rarity-limited,
+.checklist-row.rarity-limited {
   --rarity: #c2410c;
   --rarity-soft: #fff0e7;
   --rarity-border: #f4b08f;
   --rarity-strong: #9a3412;
 }
 
-.card-item.rarity-ultra {
+.card-item.rarity-ultra,
+.checklist-row.rarity-ultra {
   --rarity: #be123c;
   --rarity-soft: #fff1f2;
   --rarity-border: #f2a6b8;
   --rarity-strong: #9f1239;
 }
 
-.card-item.rarity-autograph {
+.card-item.rarity-autograph,
+.checklist-row.rarity-autograph {
   --rarity: #087f5b;
   --rarity-soft: #e7f6ef;
   --rarity-border: #9bd9c1;
   --rarity-strong: #066447;
 }
 
-.card-item.rarity-relic {
+.card-item.rarity-relic,
+.checklist-row.rarity-relic {
   --rarity: #4754c7;
   --rarity-soft: #eef1ff;
   --rarity-border: #bac3f3;
@@ -655,6 +696,108 @@ input[type="search"]:focus {
   color: var(--success);
 }
 
+.card-list.is-table-view {
+  display: block;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: 0 5px 14px rgba(19, 34, 56, 0.06);
+}
+
+.checklist-table {
+  width: 100%;
+  min-width: 860px;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.78rem;
+}
+
+.checklist-table th,
+.checklist-table td {
+  border-bottom: 1px solid var(--line);
+  padding: 9px 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.checklist-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #edf5ff;
+  color: var(--accent-strong);
+  font-size: 0.66rem;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.checklist-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.checklist-table tbody tr:hover td {
+  background: #f8fbff;
+}
+
+.checklist-row td:first-child {
+  border-left: 5px solid var(--rarity);
+  color: var(--rarity-strong);
+  font-weight: 900;
+}
+
+.table-number,
+.table-serial,
+.table-auto {
+  width: 104px;
+  white-space: nowrap;
+}
+
+.table-player {
+  min-width: 220px;
+  color: var(--ink);
+  font-weight: 900;
+}
+
+.table-club {
+  min-width: 170px;
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.table-type {
+  width: 126px;
+  color: var(--rarity-strong);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.table-parallel {
+  min-width: 210px;
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.table-serial,
+.table-auto {
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.checklist-row.is-numbered .table-serial {
+  color: var(--warning);
+}
+
+.checklist-row.is-autograph .table-auto {
+  color: var(--success);
+}
+
 .pagination {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr) auto;
@@ -722,6 +865,18 @@ noscript {
   padding: 12px;
   font-size: 0.88rem;
   font-weight: 800;
+}
+
+@media (max-width: 559px) {
+  .summary-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .view-switch,
+  .ghost-button {
+    justify-self: start;
+  }
 }
 
 @media (max-width: 759px) {
