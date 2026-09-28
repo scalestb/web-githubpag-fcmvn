@@ -1,26 +1,33 @@
-# FCMVN — Football Card Field Guide
+# FCMVN - Cẩm nang football trading card
 
-Website nội dung dành cho cộng đồng sưu tầm football trading card Việt Nam, xây dựng bằng HTML, CSS và JavaScript thuần để chạy trực tiếp trên GitHub Pages.
+Website tĩnh cho cộng đồng sưu tầm football trading card Việt Nam. Site không còn là landing page một trang dài; nội dung đã tách thành các page con thật để phù hợp GitHub Pages và dễ mở rộng bài viết.
 
-## Nội dung và tính năng
+## Cấu trúc trang
 
-- Cẩm nang cơ bản: Base, Insert, Parallel, Serial, Rookie Card và Grading.
-- Khu affiliate dụng cụ bảo quản với thông báo minh bạch.
-- Bộ tự kiểm tra các dấu hiệu giao dịch có rủi ro legit/scam.
-- Công cụ tra cứu theo cầu thủ, số thẻ, CLB, card type, serial và autograph.
-- Giao diện hoài cổ kiểu matchday programme, responsive cho điện thoại và máy tính.
-- Không cần framework, database hoặc bước build.
+- `index.html`: trang chủ dạng mục lục nội dung.
+- `guides.html`: thư viện bài hướng dẫn.
+- `guide-card-basics.html`: bài nhập môn football card.
+- `guide-checklist.html`: bài hướng dẫn đọc checklist.
+- `guide-buying-safe.html`: bài hướng dẫn mua bán an toàn.
+- `legit-scam.html`: công cụ check legit/scam và mẫu hỏi seller.
+- `stories.html`: danh sách câu chuyện legit, scam, bóc phốt theo tình huống ẩn danh.
+- `affiliate.html`: danh mục sản phẩm affiliate.
+- `checklist.html`: công cụ tra checklist sản phẩm.
 
-## Cập nhật affiliate link
+## Font tiếng Việt
 
-Các liên kết hiện đang trỏ tới cửa hàng FCMVN trên Shopee. Khi có link affiliate riêng cho từng sản phẩm, thay thuộc tính `href` của các nút “Xem tại cửa hàng” trong `index.html`. Giữ nguyên `rel="sponsored nofollow noopener"` để đảm bảo minh bạch và an toàn.
+Site dùng font `Be Vietnam Pro` từ Google Fonts, kèm fallback `Arial, Tahoma, sans-serif`. Tất cả trang đều khai báo `lang="vi"` và `charset="utf-8"` để hiển thị tiếng Việt ổn định.
+
+## Cập nhật nội dung
+
+- Thêm bài hướng dẫn: tạo file HTML mới theo mẫu các file `guide-*.html`, rồi thêm link trong `guides.html` và `index.html` nếu cần.
+- Thêm câu chuyện legit/scam/bóc phốt: thêm một `<article class="story-card" data-category="...">` trong `stories.html`. Các category hiện có là `legit`, `scam`, `expose`.
+- Thay link affiliate: sửa thuộc tính `href` trong `affiliate.html`, giữ `rel="sponsored nofollow noopener"`.
+- Thay dữ liệu checklist: cập nhật `data/list.json` và các file trong `data/seasons/`.
 
 ## Dữ liệu checklist
 
-- `data/list.json`: danh sách các dòng sản phẩm.
-- `data/seasons/*.json`: dữ liệu thẻ của từng checklist.
-
-Mỗi item hỗ trợ cấu trúc:
+Mỗi item checklist hỗ trợ cấu trúc:
 
 ```json
 {
@@ -37,16 +44,16 @@ Mỗi item hỗ trợ cấu trúc:
 
 ## Chạy local
 
-Vì checklist được đọc bằng `fetch()`, website cần chạy qua static server:
+Vì trang checklist đọc JSON bằng `fetch()`, hãy chạy qua static server:
 
 ```bash
-python3 -m http.server 5501
+python -m http.server 5501
 ```
 
 Sau đó mở `http://127.0.0.1:5501`.
 
-Trên Windows có thể mở trực tiếp `run-local.bat`.
+Trên Windows có thể dùng `run-local.bat` nếu đã cấu hình Python trong PATH.
 
 ## Đưa lên GitHub Pages
 
-Đẩy toàn bộ thư mục lên repository, sau đó vào **Settings → Pages** và chọn nhánh chứa website. Website không cần build. File `CNAME` đang giữ cấu hình tên miền tùy chỉnh hiện có.
+Đẩy toàn bộ thư mục lên repository và bật GitHub Pages cho branch chứa website. Site không cần framework, database hoặc bước build. File `CNAME` hiện có vẫn được giữ nguyên.
