@@ -1,19 +1,26 @@
-# FCMVN Card Checklist
+# FCMVN — Football Card Field Guide
 
-Website tinh dung HTML, CSS va JavaScript de tra cuu checklist cac dong san pham the.
+Website nội dung dành cho cộng đồng sưu tầm football trading card Việt Nam, xây dựng bằng HTML, CSS và JavaScript thuần để chạy trực tiếp trên GitHub Pages.
 
-## Tinh nang
+## Nội dung và tính năng
 
-- Danh sach checklist doc tu `data/list.json`.
-- Moi checklist chi tiet nam trong `data/seasons/{checklist-id}.json`.
-- Tra cuu theo so the, cau thu, CLB, card type, parallel type, serial numbered va autograph.
-- Giao dien mobile-first, khong can build, khong can anh the tam thoi.
-- Trang index co khu gioi thieu channel: Shopee, TikTok va YouTube.
+- Cẩm nang cơ bản: Base, Insert, Parallel, Serial, Rookie Card và Grading.
+- Khu affiliate dụng cụ bảo quản với thông báo minh bạch.
+- Bộ tự kiểm tra các dấu hiệu giao dịch có rủi ro legit/scam.
+- Công cụ tra cứu theo cầu thủ, số thẻ, CLB, card type, serial và autograph.
+- Giao diện hoài cổ kiểu matchday programme, responsive cho điện thoại và máy tính.
+- Không cần framework, database hoặc bước build.
 
-## Cau truc du lieu
+## Cập nhật affiliate link
 
-- `data/list.json`: registry cac dong san pham, gom `id`, `name`, `brand`, `collection`, `season`, `checklist_file` va thong ke tom tat.
-- `data/seasons/*.json`: checklist tung dong san pham. Moi item co dang:
+Các liên kết hiện đang trỏ tới cửa hàng FCMVN trên Shopee. Khi có link affiliate riêng cho từng sản phẩm, thay thuộc tính `href` của các nút “Xem tại cửa hàng” trong `index.html`. Giữ nguyên `rel="sponsored nofollow noopener"` để đảm bảo minh bạch và an toàn.
+
+## Dữ liệu checklist
+
+- `data/list.json`: danh sách các dòng sản phẩm.
+- `data/seasons/*.json`: dữ liệu thẻ của từng checklist.
+
+Mỗi item hỗ trợ cấu trúc:
 
 ```json
 {
@@ -28,26 +35,18 @@ Website tinh dung HTML, CSS va JavaScript de tra cuu checklist cac dong san pham
 }
 ```
 
-## Chay local
+## Chạy local
 
-Trang dung `fetch()` de doc JSON, vi vay can chay qua static server. Khong mo truc tiep `index.html` bang `file://`.
-
-### Cach nhanh tren Windows
-
-Mo file `run-local.bat`, sau do vao:
-
-```text
-http://127.0.0.1:5501
-```
-
-### Chay bang command
+Vì checklist được đọc bằng `fetch()`, website cần chạy qua static server:
 
 ```bash
-python -m http.server 5501
+python3 -m http.server 5501
 ```
 
-Sau do mo `http://127.0.0.1:5501`.
+Sau đó mở `http://127.0.0.1:5501`.
 
-## Dua len GitHub Pages
+Trên Windows có thể mở trực tiếp `run-local.bat`.
 
-Day toan bo thu muc nay len repository GitHub, sau do bat Pages voi source la branch chua cac file nay. Khong can build.
+## Đưa lên GitHub Pages
+
+Đẩy toàn bộ thư mục lên repository, sau đó vào **Settings → Pages** và chọn nhánh chứa website. Website không cần build. File `CNAME` đang giữ cấu hình tên miền tùy chỉnh hiện có.

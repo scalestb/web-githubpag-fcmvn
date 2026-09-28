@@ -3,204 +3,135 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta
-      name="description"
-      content="Tra cứu checklist các dòng sản phẩm thẻ của FCMVN theo số thẻ, cầu thủ, CLB, card type, parallel, serial và autograph."
-    >
-    <title>FCMVN Card Checklist</title>
+    <meta name="theme-color" content="#173b32">
+    <meta name="description" content="FCMVN — cẩm nang football trading card, checklist sản phẩm, kinh nghiệm mua bán và nhận biết legit/scam dành cho collector Việt Nam.">
+    <meta property="og:title" content="FCMVN — Football Card Field Guide">
+    <meta property="og:description" content="Kiến thức, checklist và kinh nghiệm giao dịch football trading card an toàn cho collector Việt Nam.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="FCMVN — Football Card Field Guide">
+    <meta name="twitter:description" content="Kiến thức, checklist và kinh nghiệm giao dịch football trading card an toàn.">
+    <title>FCMVN — Football Card Field Guide</title>
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260816-table-default">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Barlow+Condensed:wght@500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=20260928-field-guide">
   </head>
   <body>
-    <main class="app-shell">
-      <header class="site-header" aria-labelledby="pageTitle">
-        <div class="brand-copy">
-          <p class="eyebrow">FCMVN Card Checklist</p>
-          <h1 id="pageTitle">
-            <span>Tra cứu checklist</span>
-            <span>dòng sản phẩm thẻ</span>
-          </h1>
-          <p class="intro">
-            Chọn dòng sản phẩm để xem checklist và lọc nhanh theo số thẻ, cầu thủ, CLB, parallel, serial hoặc autograph.
-          </p>
-        </div>
+    <a class="skip-link" href="#mainContent">Bỏ qua đến nội dung chính</a>
+    <header class="masthead" id="top">
+      <div class="score-strip"><div class="site-wrap score-strip__inner"><p>Football card community · Việt Nam</p><p><span class="live-dot" aria-hidden="true"></span>Cập nhật checklist 2026/27</p></div></div>
+      <div class="site-wrap brand-row">
+        <a class="brand" href="#top" aria-label="FCMVN - về đầu trang"><span class="brand__mark" aria-hidden="true">FC</span><span class="brand__type"><strong>FCMVN</strong><small>Football Card Field Guide</small></span></a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav"><span></span><span></span><span></span><span class="sr-only">Mở menu</span></button>
+        <nav class="main-nav" id="siteNav" aria-label="Điều hướng chính">
+          <a href="#kien-thuc">Kiến thức</a><a href="#legit-scam">Legit / Scam</a><a href="#checklist">Checklist</a><a href="#goc-suu-tam">Góc sưu tầm</a><a class="nav-shop" href="https://shopee.vn/fcmvn_com" target="_blank" rel="sponsored nofollow noopener">Shop ↗</a>
+        </nav>
+      </div>
+    </header>
 
-        <section class="channel-panel" aria-labelledby="channelTitle">
-          <div class="section-heading">
-            <p class="eyebrow">Channel</p>
-            <h2 id="channelTitle">Theo dõi FCMVN</h2>
+    <main id="mainContent">
+      <section class="hero">
+        <div class="site-wrap hero__grid">
+          <div class="hero__copy">
+            <p class="kicker"><span>Issue 01</span> Cẩm nang cho collector Việt</p>
+            <h1>Bóng đá nằm trong ký ức.<br><em>Trading card</em> giữ nó lại.</h1>
+            <p class="hero__lead">Từ chiếc base card đầu tiên đến cú hit autograph đáng nhớ — FCMVN giúp bạn hiểu sản phẩm, đọc checklist và giao dịch an toàn hơn.</p>
+            <div class="hero__actions"><a class="button button--primary" href="#kien-thuc">Bắt đầu sưu tầm</a><a class="button button--paper" href="#legit-scam">Kiểm tra dấu hiệu scam</a></div>
+            <p class="hero__note">Không hype mù quáng. Không định giá thay bạn. Chỉ chia sẻ thông tin có ngữ cảnh.</p>
           </div>
-          <div class="channel-list" id="channelList"></div>
-        </section>
-      </header>
-
-      <section class="season-panel" aria-labelledby="seasonTitle">
-        <div class="section-heading">
-          <p class="eyebrow">Dòng sản phẩm</p>
-          <h2 id="seasonTitle">Danh sách checklist</h2>
-        </div>
-        <p class="section-note">Bấm vào một dòng sản phẩm để mở checklist tương ứng.</p>
-        <div class="season-list" id="seasonList" aria-live="polite"></div>
-      </section>
-
-      <section class="lookup-panel" id="checklistApp" aria-labelledby="lookupTitle">
-        <div class="lookup-heading">
-          <div>
-            <p class="eyebrow">Checklist</p>
-            <h2 id="lookupTitle">Tra cứu checklist</h2>
-          </div>
-          <div class="lookup-actions">
-            <p class="active-season" id="activeSeasonName">Đang tải dữ liệu</p>
-            <button
-              class="filter-toggle"
-              id="filterToggle"
-              type="button"
-              aria-expanded="true"
-              aria-controls="filterBody"
-            >
-              <span id="filterToggleText">Thu gọn</span>
-              <span class="filter-toggle-icon" aria-hidden="true"></span>
-            </button>
-          </div>
-        </div>
-
-        <div class="filter-body" id="filterBody">
-          <div class="controls" aria-label="Bộ lọc checklist">
-            <label class="field season-field">
-              <span>Dòng sản phẩm</span>
-              <select id="seasonSelect"></select>
-            </label>
-
-            <label class="field search-field">
-              <span>Tìm kiếm</span>
-              <input id="searchInput" type="search" placeholder="Số thẻ, cầu thủ, CLB, parallel...">
-            </label>
-
-            <label class="field club-field">
-              <span>CLB</span>
-              <select id="clubFilter">
-                <option value="all">Tất cả CLB</option>
-              </select>
-            </label>
-
-            <label class="field type-field">
-              <span>Card type</span>
-              <select id="cardTypeFilter">
-                <option value="all">Tất cả type</option>
-              </select>
-            </label>
-
-            <label class="field parallel-field">
-              <span>Parallel</span>
-              <select id="parallelFilter">
-                <option value="all">Tất cả parallel</option>
-              </select>
-            </label>
-
-            <label class="field feature-field">
-              <span>Serial/Auto</span>
-              <select id="featureFilter">
-                <option value="all">Tất cả</option>
-                <option value="numbered">Serial numbered</option>
-                <option value="autograph">Autograph</option>
-                <option value="standard">Không serial/auto</option>
-              </select>
-            </label>
-          </div>
-
-          <div class="summary-row">
-            <p id="resultSummary">Đang tải checklist</p>
-            <div class="view-switch" role="group" aria-label="Kiểu hiển thị">
-              <button class="view-button is-active" type="button" data-view-mode="table" aria-pressed="true">Bảng</button>
-              <button class="view-button" type="button" data-view-mode="cards" aria-pressed="false">Thẻ</button>
+          <div class="hero-card-scene" aria-label="Minh họa thẻ bóng đá FCMVN số 10">
+            <div class="hero-card hero-card--back" aria-hidden="true"></div>
+            <div class="hero-card">
+              <div class="hero-card__top"><span>FCMVN ALL-STARS</span><span>1998</span></div>
+              <div class="hero-card__portrait"><div class="pitch-lines" aria-hidden="true"></div><span class="player-number">10</span><span class="player-silhouette" aria-hidden="true"></span></div>
+              <div class="hero-card__name"><small>THE COLLECTOR</small><strong>GIỮ LỬA<br>ĐAM MÊ</strong></div>
+              <div class="hero-card__footer"><span>VIỆT NAM</span><span>★ ROOKIE ★</span></div>
             </div>
-            <button class="ghost-button" id="clearFilters" type="button">Xóa lọc</button>
+            <span class="card-caption">Card no. FCM–010 · Fan-made artwork</span>
           </div>
         </div>
       </section>
 
-      <section class="stats-grid" id="statsGrid" aria-label="Tổng quan checklist">
-        <article class="stat-item">
-          <span id="totalItems">0</span>
-          <p>Tổng item</p>
-        </article>
-        <article class="stat-item">
-          <span id="numberedItems">0</span>
-          <p>Serial</p>
-        </article>
-        <article class="stat-item">
-          <span id="autographItems">0</span>
-          <p>Auto</p>
-        </article>
-        <article class="stat-item">
-          <span id="clubsCount">0</span>
-          <p>CLB</p>
-        </article>
+      <div class="ticker" aria-label="Chủ đề nổi bật"><div class="ticker__track"><span>CHECKLIST</span><i>★</i><span>ROOKIE CARD</span><i>★</i><span>PARALLEL</span><i>★</i><span>AUTOGRAPH</span><i>★</i><span>LEGIT CHECK</span><i>★</i><span>COLLECT SMARTER</span></div></div>
+
+      <section class="section section--paper" id="kien-thuc">
+        <div class="site-wrap">
+          <div class="section-heading section-heading--split"><div><p class="kicker">The basics · Kiến thức nền</p><h2>Hiểu chiếc thẻ<br>trước khi xuống tiền.</h2></div><p>Football card không chỉ có cầu thủ nổi tiếng. Năm phát hành, set, parallel, số thứ tự và tình trạng bề mặt đều ảnh hưởng đến câu chuyện — và giá trị — của một chiếc thẻ.</p></div>
+          <div class="lesson-grid">
+            <details class="lesson-card" open><summary><span class="lesson-card__number">01</span><span>Base, Insert & Parallel</span><i aria-hidden="true">+</i></summary><div class="lesson-card__body"><p><strong>Base</strong> là bộ thẻ chính. <strong>Insert</strong> là bộ phụ theo chủ đề. <strong>Parallel</strong> giữ thiết kế gốc nhưng đổi màu, chất liệu hoặc giới hạn số lượng.</p><p class="field-note">Mẹo: đừng chỉ nhìn màu. Luôn đối chiếu tên parallel với checklist chính thức.</p></div></details>
+            <details class="lesson-card"><summary><span class="lesson-card__number">02</span><span>Serial numbered là gì?</span><i aria-hidden="true">+</i></summary><div class="lesson-card__body"><p>Ký hiệu 07/99 nghĩa là chiếc thẻ thứ 7 trong tổng số 99 bản của parallel đó. Số áo trùng serial có thể được collector ưa chuộng, nhưng không tự động đảm bảo giá cao.</p><p class="field-note">Kiểm tra font, vị trí dập số và checklist để tránh thẻ bị can thiệp.</p></div></details>
+            <details class="lesson-card"><summary><span class="lesson-card__number">03</span><span>Rookie Card (RC)</span><i aria-hidden="true">+</i></summary><div class="lesson-card__body"><p>RC thường là thẻ chính thức đầu tiên của cầu thủ trong một sản phẩm lớn. “Rookie year”, “first card” và logo RC không phải lúc nào cũng là một khái niệm.</p><p class="field-note">Hãy xác định cộng đồng đang công nhận thẻ nào, thay vì chỉ tin tiêu đề người bán.</p></div></details>
+            <details class="lesson-card"><summary><span class="lesson-card__number">04</span><span>Condition & Grading</span><i aria-hidden="true">+</i></summary><div class="lesson-card__body"><p>Centering, góc, cạnh và bề mặt là bốn nhóm lỗi phổ biến. Slab giúp xác thực và chuẩn hóa condition, nhưng phí grading và thanh khoản cần được tính vào bài toán.</p><p class="field-note">Soi dưới ánh sáng xiên, chụp đủ mặt trước, mặt sau và bốn góc.</p></div></details>
+          </div>
+        </div>
       </section>
 
-      <section class="card-list" id="cardList" aria-live="polite"></section>
-
-      <nav class="pagination" id="pagination" aria-label="Phân trang danh sách thẻ" hidden>
-        <button class="page-button" id="prevPage" type="button">Trước</button>
-        <span class="page-info" id="pageInfo">Trang 1/1</span>
-        <button class="page-button" id="nextPage" type="button">Sau</button>
-        <label class="page-size">
-          <span>Hiển thị</span>
-          <select id="pageSizeSelect">
-            <option value="24">24</option>
-            <option value="48">48</option>
-            <option value="96">96</option>
-            <option value="200" selected>200</option>
-          </select>
-        </label>
-      </nav>
-
-      <section class="empty-state" id="emptyState" hidden>
-        <h2>Không tìm thấy item phù hợp</h2>
-        <p>Thử đổi dòng sản phẩm, bộ lọc hoặc từ khóa tìm kiếm.</p>
+      <section class="section shop-section" id="goc-suu-tam">
+        <div class="site-wrap">
+          <div class="section-heading section-heading--on-dark"><p class="kicker">Collector's bench · Affiliate picks</p><h2>Dụng cụ cơ bản.<br>Dùng đúng, bảo quản lâu.</h2><p>Một vài món dễ bắt đầu cho góc sưu tầm. Giá và tồn kho do nhà bán hàng quyết định.</p></div>
+          <div class="product-grid">
+            <article class="product-card"><div class="product-card__visual product-card__visual--sleeve" aria-hidden="true"><span>100</span><small>soft sleeves</small></div><div class="product-card__copy"><p class="product-card__tag">Bảo quản cấp 1</p><h3>Penny Sleeve</h3><p>Lớp áo đầu tiên giúp hạn chế xước bề mặt. Nên dùng trước khi cho thẻ vào top loader.</p><a class="text-link" href="https://shopee.vn/fcmvn_com" target="_blank" rel="sponsored nofollow noopener">Xem tại cửa hàng <span>↗</span></a></div></article>
+            <article class="product-card"><div class="product-card__visual product-card__visual--loader" aria-hidden="true"><span>35pt</span><small>rigid holder</small></div><div class="product-card__copy"><p class="product-card__tag">Bảo quản cấp 2</p><h3>Top Loader</h3><p>Vỏ cứng cho thẻ tiêu chuẩn. Hãy sleeve thẻ trước và chọn đúng độ dày.</p><a class="text-link" href="https://shopee.vn/fcmvn_com" target="_blank" rel="sponsored nofollow noopener">Xem tại cửa hàng <span>↗</span></a></div></article>
+            <article class="product-card"><div class="product-card__visual product-card__visual--mag" aria-hidden="true"><span>UV</span><small>one-touch case</small></div><div class="product-card__copy"><p class="product-card__tag">Trưng bày</p><h3>Magnetic Holder</h3><p>Đóng mở nhanh, phù hợp thẻ đẹp muốn trưng bày. Kiểm tra độ dày trước khi mua.</p><a class="text-link" href="https://shopee.vn/fcmvn_com" target="_blank" rel="sponsored nofollow noopener">Xem tại cửa hàng <span>↗</span></a></div></article>
+          </div>
+          <p class="affiliate-note"><strong>Minh bạch affiliate:</strong> FCMVN có thể nhận một khoản hoa hồng nhỏ khi bạn mua qua liên kết trên, không làm tăng giá bạn phải trả. Chúng tôi chỉ giới thiệu nhóm sản phẩm phù hợp với nội dung hướng dẫn.</p>
+        </div>
       </section>
+
+      <section class="section safety-section" id="legit-scam">
+        <div class="site-wrap safety-grid">
+          <div class="safety-copy"><p class="kicker">Trade safe · Legit / Scam</p><h2>Chậm một nhịp.<br>Kiểm tra trước khi chuyển khoản.</h2><p>Không có bài kiểm tra nào đảm bảo giao dịch an toàn tuyệt đối. Nhưng các dấu hiệu dưới đây giúp bạn nhận ra lúc cần dừng lại và xác minh thêm.</p><div class="rule-card"><span class="rule-card__stamp">LUẬT<br>SỐ 01</span><p>Người bán uy tín không ngại cung cấp ảnh có <strong>tên + ngày hiện tại</strong>, video tình trạng thẻ và lịch sử giao dịch có thể kiểm chứng.</p></div></div>
+          <form class="scam-checker" id="scamChecker">
+            <div class="scam-checker__top"><span>Quick check</span><strong>Đánh dấu điều đang xảy ra</strong></div>
+            <fieldset><legend class="sr-only">Các dấu hiệu rủi ro</legend>
+              <label><input type="checkbox" data-risk="3"><span>Giá thấp bất thường so với các giao dịch gần đây.</span></label>
+              <label><input type="checkbox" data-risk="2"><span>Tài khoản mới, ít tương tác hoặc lịch sử vừa bị đổi tên.</span></label>
+              <label><input type="checkbox" data-risk="3"><span>Từ chối chụp ảnh kèm tên và ngày hiện tại.</span></label>
+              <label><input type="checkbox" data-risk="2"><span>Thúc giục chuyển khoản, nói có nhiều người đang chờ.</span></label>
+              <label><input type="checkbox" data-risk="3"><span>Tên chủ tài khoản ngân hàng không khớp, giải thích vòng vo.</span></label>
+              <label><input type="checkbox" data-risk="2"><span>Chỉ nhận thanh toán không có bảo vệ người mua.</span></label>
+            </fieldset>
+            <div class="risk-result risk-result--idle" id="riskResult" aria-live="polite"><span class="risk-result__light" aria-hidden="true"></span><div><small>Đánh giá nhanh</small><strong>Chưa có dấu hiệu được chọn</strong><p>Đối chiếu danh tính và giữ lại toàn bộ bằng chứng giao dịch.</p></div></div>
+            <button class="button button--ink" id="resetRisk" type="reset">Làm lại kiểm tra</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section checklist-section" id="checklist">
+        <div class="site-wrap">
+          <div class="section-heading section-heading--split"><div><p class="kicker">The database · Dữ liệu sưu tầm</p><h2>Tra checklist.<br>Tìm đúng chiếc thẻ.</h2></div><p>Tìm theo cầu thủ, số thẻ, CLB hoặc loại card trong các bộ sản phẩm đang có trên FCMVN.</p></div>
+          <div class="checklist-app" id="checklistApp">
+            <div class="checklist-toolbar">
+              <label class="field field--season"><span>Dòng sản phẩm</span><select id="seasonSelect"><option>Đang tải dữ liệu…</option></select></label>
+              <label class="field field--search"><span>Tìm nhanh</span><input id="searchInput" type="search" placeholder="Ví dụ: Messi, Arsenal, 12/99…" autocomplete="off"></label>
+              <label class="field"><span>CLB</span><select id="clubFilter"><option value="all">Tất cả CLB</option></select></label>
+              <label class="field"><span>Loại thẻ</span><select id="cardTypeFilter"><option value="all">Tất cả loại</option></select></label>
+              <label class="check-field"><input id="specialOnly" type="checkbox"><span>Chỉ hiện serial / auto</span></label>
+            </div>
+            <div class="checklist-summary"><div><p class="kicker">Đang xem</p><h3 id="activeSeasonName">Đang tải checklist…</h3></div><p id="resultSummary" aria-live="polite">Đang đọc dữ liệu</p><button class="text-button" id="clearFilters" type="button">Xóa bộ lọc</button></div>
+            <div class="card-results" id="cardList" aria-live="polite"></div>
+            <div class="empty-state" id="emptyState" hidden><strong>Không tìm thấy chiếc thẻ phù hợp.</strong><p>Thử từ khóa khác hoặc xóa bớt bộ lọc.</p></div>
+            <nav class="pagination" id="pagination" aria-label="Phân trang kết quả" hidden><button id="prevPage" type="button">← Trước</button><span id="pageInfo">Trang 1 / 1</span><button id="nextPage" type="button">Sau →</button></nav>
+          </div>
+        </div>
+      </section>
+
+      <section class="manifesto"><div class="site-wrap manifesto__inner"><p class="kicker">Why we collect</p><blockquote>“Một chiếc thẻ nhỏ. Một khoảnh khắc lớn. Một câu chuyện chỉ collector mới hiểu.”</blockquote><div class="manifesto__meta"><span>FCMVN</span><span>EST. IN VIETNAM</span><span>FOR THE LOVE OF THE GAME</span></div></div></section>
     </main>
 
-    <template id="channelTemplate">
-      <a class="channel-card" href="#" target="_blank" rel="noopener">
-        <span class="channel-icon"></span>
-        <span class="channel-copy">
-          <strong class="channel-name"></strong>
-          <small class="channel-desc"></small>
-        </span>
-      </a>
-    </template>
+    <footer class="site-footer">
+      <div class="site-wrap footer-grid">
+        <div><a class="brand brand--footer" href="#top"><span class="brand__mark">FC</span><span class="brand__type"><strong>FCMVN</strong><small>Football Card Field Guide</small></span></a><p>Nơi chia sẻ kiến thức football trading card bằng tiếng Việt — độc lập, thực tế và tôn trọng cộng đồng.</p></div>
+        <div class="footer-links"><strong>Theo dõi</strong><a href="https://www.tiktok.com/@fcmvn_com" target="_blank" rel="noopener">TikTok ↗</a><a href="https://www.youtube.com/@fcmvn-com" target="_blank" rel="noopener">YouTube ↗</a><a href="https://shopee.vn/fcmvn_com" target="_blank" rel="sponsored nofollow noopener">Shopee ↗</a></div>
+        <div class="footer-links"><strong>Đi nhanh</strong><a href="#kien-thuc">Kiến thức</a><a href="#legit-scam">Legit / Scam</a><a href="#checklist">Checklist</a></div>
+      </div>
+      <div class="site-wrap footer-bottom"><span>© <span id="currentYear">2026</span> FCMVN.</span><span>Nội dung mang tính tham khảo, không phải tư vấn đầu tư.</span></div>
+    </footer>
 
-    <template id="seasonTemplate">
-      <button class="season-button" type="button">
-        <span class="season-name"></span>
-        <small class="season-brand"></small>
-        <small class="season-count"></small>
-      </button>
-    </template>
-
-    <template id="cardTemplate">
-      <article class="card-item">
-        <div class="card-number"></div>
-        <div class="card-content">
-          <div class="card-topline">
-            <span class="card-type"></span>
-            <span class="parallel-pill"></span>
-          </div>
-          <h3 class="player-name"></h3>
-          <p class="club-name"></p>
-          <div class="badge-row">
-            <span class="serial-badge"></span>
-            <span class="auto-badge"></span>
-          </div>
-        </div>
-      </article>
-    </template>
-
-    <noscript>Trang cần JavaScript để đọc checklist từ các file JSON.</noscript>
-    <script src="app.js?v=20260816-table-default"></script>
+    <template id="cardTemplate"><article class="data-card"><div class="data-card__number"></div><div class="data-card__main"><div class="data-card__eyebrow"><span class="data-card__type"></span><span class="data-card__parallel"></span></div><h3 class="data-card__player"></h3><p class="data-card__club"></p></div><div class="data-card__badges"><span class="badge badge--serial"></span><span class="badge badge--auto"></span></div></article></template>
+    <noscript><p class="noscript">Vui lòng bật JavaScript để dùng checklist và công cụ kiểm tra rủi ro.</p></noscript>
+    <script src="app.js?v=20260928-field-guide"></script>
   </body>
 </html>
