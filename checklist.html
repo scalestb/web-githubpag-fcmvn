@@ -1,95 +1,42 @@
 <!doctype html>
 <html lang="vi">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Tra checklist football trading card theo cầu thủ, CLB, số thẻ, loại thẻ, parallel, serial và autograph.">
-    <title>Checklist football card - FCMVN</title>
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=20260929-pages">
-  </head>
-  <body data-page="checklist">
-    <a class="skip-link" href="#mainContent">Bỏ qua đến nội dung chính</a>
-    <header class="site-header">
-      <div class="site-wrap header-inner">
-        <a class="brand" href="index.html" aria-label="FCMVN - về trang chủ"><span class="brand-mark" aria-hidden="true">FC</span><span class="brand-copy"><strong>FCMVN</strong><small>Cẩm nang trading card</small></span></a>
-        <button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav"><span></span><span></span><span></span><span class="sr-only">Mở menu</span></button>
-        <nav class="site-nav" id="siteNav" aria-label="Điều hướng chính">
-          <a href="index.html" data-nav="home">Trang chủ</a><a href="guides.html" data-nav="guides">Hướng dẫn</a><a href="legit-scam.html" data-nav="safety">Check legit/scam</a><a href="stories.html" data-nav="stories">Câu chuyện</a><a href="affiliate.html" data-nav="affiliate">Sản phẩm aff</a><a href="checklist.html" data-nav="checklist">Checklist</a>
-        </nav>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f2db">
+  <meta name="description" content="Lọc danh sách thẻ Topps Flagship Premier League 2026/27 theo nhóm, CLB và tên cầu thủ.">
+  <title>Checklist Topps PL 2026/2027 — FCMVN</title>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="stylesheet" href="styles.css?v=20261009-pixel">
+</head>
+<body data-page="checklist">
+  <a class="skip-link" href="#mainContent">Đến nội dung chính</a>
+  <header class="site-header"><div class="site-wrap header-inner"><a class="brand" href="index.html" aria-label="FCMVN — Trang chủ"><span class="brand-icon" aria-hidden="true">▣</span><span>FCMVN<span class="brand-dot">_</span></span></a><button class="menu-button" id="menuToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Mở menu"><span></span><span></span><span></span></button><nav class="site-nav" id="siteNav" aria-label="Điều hướng chính"><a href="legit-scam.html" data-nav="legit-scam">LEGIT / SCAM</a><a href="affiliate.html" data-nav="products">SẢN PHẨM</a><a href="checklist.html" data-nav="checklist">CHECKLIST</a></nav></div></header>
+  <main id="mainContent" class="site-wrap page-main">
+    <header class="page-intro"><p class="eyebrow">[ 03 / DATABASE ]</p><h1>CHECKLIST<span class="heading-cursor">_</span></h1><p>Topps Flagship Premier League 2026/27. Chọn một danh sách thẻ, rồi tìm theo tên cầu thủ, CLB hoặc số thẻ.</p></header>
+    <section class="checklist-app" id="checklistApp" aria-labelledby="checklistTitle">
+      <div class="section-heading section-heading-compact"><div><p class="eyebrow">[ TOPPS PL / 2026—2027 ]</p><h2 id="checklistTitle">KHO THẺ</h2></div><span id="resultSummary" aria-live="polite">ĐANG TẢI...</span></div>
+      <div class="checklist-layout">
+        <aside class="checklist-sidebar"><h3>CHỌN DANH SÁCH</h3><div class="list-filter" id="listFilter" role="group" aria-label="Lọc theo danh sách thẻ">
+          <button type="button" class="is-active" data-list="all" aria-pressed="true"><span>TẤT CẢ</span><small data-count="all">—</small></button>
+          <button type="button" data-list="BASE" aria-pressed="false"><span>BASE</span><small data-count="BASE">—</small></button>
+          <button type="button" data-list="INSERT" aria-pressed="false"><span>INSERT</span><small data-count="INSERT">—</small></button>
+          <button type="button" data-list="AUTOGRAPH" aria-pressed="false"><span>AUTOGRAPH</span><small data-count="AUTOGRAPH">—</small></button>
+          <button type="button" data-list="AUTOGRAPH_RELIC" aria-pressed="false"><span>AUTO RELIC</span><small data-count="AUTOGRAPH_RELIC">—</small></button>
+          <button type="button" data-list="RELIC" aria-pressed="false"><span>RELIC</span><small data-count="RELIC">—</small></button>
+        </div></aside>
+        <div class="checklist-content">
+          <div class="checklist-toolbar"><label class="field field-search"><span>TÌM THẺ</span><input id="searchInput" type="search" placeholder="Tên cầu thủ, số thẻ..." autocomplete="off"></label><label class="field"><span>CLB</span><select id="clubFilter"><option value="all">Tất cả CLB</option></select></label><button class="text-button" id="clearFilters" type="button">XÓA BỘ LỌC</button></div>
+          <div class="card-results" id="cardList" aria-live="polite"></div>
+          <div class="empty-state" id="emptyState" hidden><strong>KHÔNG TÌM THẤY THẺ</strong><p>Thử danh sách hoặc từ khóa khác.</p></div>
+          <nav class="pagination" id="pagination" aria-label="Phân trang kết quả" hidden><button id="prevPage" type="button">← TRƯỚC</button><span id="pageInfo">TRANG 1 / 1</span><button id="nextPage" type="button">SAU →</button></nav>
+        </div>
       </div>
-    </header>
-
-    <main id="mainContent" class="page-shell">
-      <section class="page-header page-header-compact">
-        <div class="site-wrap">
-          <p class="eyebrow">Database</p>
-          <h1>Tra checklist football card</h1>
-          <p class="page-deck">Tìm theo cầu thủ, số thẻ, CLB, loại card, parallel, serial và autograph trong các dòng sản phẩm đang có dữ liệu.</p>
-        </div>
-      </section>
-
-      <section class="content-section">
-        <div class="site-wrap">
-          <div class="checklist-app" id="checklistApp">
-            <div class="checklist-toolbar">
-              <label class="field">
-                <span>Dòng sản phẩm</span>
-                <select id="seasonSelect"><option>Đang tải dữ liệu...</option></select>
-              </label>
-              <label class="field field-wide">
-                <span>Tìm nhanh</span>
-                <input id="searchInput" type="search" placeholder="Ví dụ: Messi, Arsenal, 12/99..." autocomplete="off">
-              </label>
-              <label class="field">
-                <span>CLB</span>
-                <select id="clubFilter"><option value="all">Tất cả CLB</option></select>
-              </label>
-              <label class="field">
-                <span>Loại thẻ</span>
-                <select id="cardTypeFilter"><option value="all">Tất cả loại</option></select>
-              </label>
-              <label class="check-field"><input id="specialOnly" type="checkbox"><span>Chỉ hiện serial hoặc autograph</span></label>
-            </div>
-            <div class="checklist-summary">
-              <div>
-                <p class="eyebrow">Đang xem</p>
-                <h2 id="activeSeasonName">Đang tải checklist...</h2>
-              </div>
-              <p id="resultSummary" aria-live="polite">Đang đọc dữ liệu</p>
-              <button class="text-button" id="clearFilters" type="button">Xóa bộ lọc</button>
-            </div>
-            <div class="card-results" id="cardList" aria-live="polite"></div>
-            <div class="empty-state" id="emptyState" hidden>
-              <strong>Không tìm thấy chiếc thẻ phù hợp.</strong>
-              <p>Thử từ khóa khác hoặc xóa bớt bộ lọc.</p>
-            </div>
-            <nav class="pagination" id="pagination" aria-label="Phân trang kết quả" hidden>
-              <button id="prevPage" type="button">Trước</button>
-              <span id="pageInfo">Trang 1 / 1</span>
-              <button id="nextPage" type="button">Sau</button>
-            </nav>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <template id="cardTemplate">
-      <article class="data-card">
-        <div class="data-card-number"></div>
-        <div class="data-card-main">
-          <div class="data-card-meta"><span class="data-card-type"></span><span class="data-card-parallel"></span></div>
-          <h3 class="data-card-player"></h3>
-          <p class="data-card-club"></p>
-        </div>
-        <div class="data-card-badges"><span class="badge badge-serial"></span><span class="badge badge-auto"></span></div>
-      </article>
-    </template>
-    <noscript><p class="noscript">Vui lòng bật JavaScript để dùng checklist.</p></noscript>
-    <footer class="site-footer"><div class="site-wrap footer-bottom footer-bottom-simple"><span>© <span id="currentYear">2026</span> FCMVN.</span><a href="guide-checklist.html">Cách đọc checklist</a></div></footer>
-    <script src="app.js?v=20260929-pages"></script>
-  </body>
+    </section>
+  </main>
+  <template id="cardTemplate"><article class="data-card"><div class="data-card-number"></div><div class="data-card-main"><div class="data-card-meta"><span class="data-card-type"></span><span class="data-card-parallel"></span></div><h3 class="data-card-player"></h3><p class="data-card-club"></p></div><div class="data-card-badges"><span class="badge badge-auto"></span></div></article></template>
+  <noscript><p class="noscript">Vui lòng bật JavaScript để dùng checklist.</p></noscript>
+  <footer class="site-footer"><div class="site-wrap footer-inner"><span>© <span id="currentYear">2026</span> FCMVN</span><span>TOPPS PL 2026/2027</span><a href="index.html">TRANG CHỦ ↑</a></div></footer>
+  <script src="app.js?v=20261009-pixel"></script>
+</body>
 </html>

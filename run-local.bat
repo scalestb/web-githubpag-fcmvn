@@ -2,7 +2,7 @@
 setlocal
 cd /d "%~dp0"
 
-set PORT=5502
+set PORT=5501
 set ROOT=%~dp0
 
 if not exist "%ROOT%index.html" (
@@ -14,7 +14,7 @@ if not exist "%ROOT%index.html" (
   exit /b 1
 )
 
-echo Starting local static server for Panini card lookup...
+echo Starting local static server for FCMVN...
 echo Serving folder:
 echo %ROOT%
 echo.
