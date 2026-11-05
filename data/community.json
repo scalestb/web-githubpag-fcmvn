@@ -1,0 +1,7 @@
+{
+  "reports": [
+    {"title":"Cách kiểm tra bài giao dịch trước khi chuyển khoản","description":"Nội dung hướng dẫn mẫu: đối chiếu tên tài khoản, lịch sử giao dịch, ảnh thẻ và phương thức thanh toán. Chưa có cáo buộc đối với cá nhân nào.","status":"HƯỚNG DẪN","date":"NỘI DUNG MẪU","account":"Không áp dụng","accountUrl":null,"sourceUrl":null},
+    {"title":"Nhận diện ảnh thẻ được dùng lại","description":"Nội dung hướng dẫn mẫu: yêu cầu ảnh chụp mới kèm ngày và tên người bán trước khi quyết định bid.","status":"HƯỚNG DẪN","date":"NỘI DUNG MẪU","account":"Không áp dụng","accountUrl":null,"sourceUrl":null}
+  ],
+  "legit": []
+}
